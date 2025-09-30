@@ -1,0 +1,41 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\SocialMedia;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class SocialMediaSeeder extends Seeder {
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void {
+        $socialMedia = [
+            [
+                'name' => 'Facebook',
+                'url' => 'https://www.facebook.com/borderlessshopping',
+                'icon' => 'fab fa-facebook',
+            ],
+            [
+                'name' => 'Twitter',
+                'url' => 'https://www.twitter.com/borderlessshopping',
+                'icon' => 'fab fa-twitter',
+            ],
+            [
+                'name' => 'Instagram',
+                'url' => 'https://www.instagram.com/borderlessshopping',
+                'icon' => 'fab fa-instagram',
+            ],
+            [
+                'name' => 'LinkedIn',
+                'url' => 'https://www.linkedin.com/borderlessshopping',
+                'icon' => 'fab fa-linkedin',
+            ],
+        ];
+
+        foreach ($socialMedia as $media) {
+            SocialMedia::create($media);
+        }
+    }
+}

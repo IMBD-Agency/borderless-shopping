@@ -1,0 +1,20 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Contact;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class ContactSeeder extends Seeder {
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void {
+        Contact::create([
+            'email' => 'info@borderlessshopping.com',
+            'phone' => '+8801717171717',
+            'whatsapp' => '+8801717171717',
+        ]);
+    }
+}

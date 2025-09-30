@@ -16,11 +16,21 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderReceivedThankyouMail;
 use App\Mail\OrderReceivedAdminNotificationMail;
+use App\Models\Contact;
+use App\Models\Review;
+use App\Models\SocialMedia;
 use Illuminate\Support\Facades\Log;
 
 class FrontendController extends Controller {
+
+    public function __construct() {
+        $this->socialMedia = SocialMedia::all();
+    }
+
     public function index() {
+        $this->contact_details = Contact::first();
         $this->districts = District::orderBy('name', 'asc')->get();
+        $this->reviews = Review::inRandomOrder()->take(3)->get();
         return view('frontend.index', $this->data);
     }
 
@@ -256,7 +266,7 @@ class FrontendController extends Controller {
     }
 
     public function trackOrder() {
-        return view('frontend.track-order');
+        return view('frontend.track-order', $this->data);
     }
 
     public function trackOrderSubmit(Request $request) {

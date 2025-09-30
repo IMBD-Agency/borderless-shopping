@@ -1,15 +1,37 @@
 <footer class="footer">
     <div class="container">
-        <div class="text-center">
-            <h5>BorderlessShopping</h5>
-            <p class="text-muted mb-3">Making Australian shopping accessible to Bangladesh.</p>
-            <div class="mb-3">
-                <a href="#" class="text-muted me-3"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="text-muted me-3"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="text-muted me-3"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-muted"><i class="fab fa-linkedin-in"></i></a>
+        <div class="row align-items-center">
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="footer-brand">
+                    <h5 class="footer-title">BorderlessShopping</h5>
+                    <p class="footer-description">Making Australian shopping accessible to Bangladesh.</p>
+                </div>
             </div>
-            <p class="text-muted mb-0">BorderlessShopping &copy; {{ now()->year }} | All rights reserved.</p>
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="footer-social text-center">
+                    <h6 class="footer-social-title">Follow Us</h6>
+                    <div class="social-links">
+                        @foreach ($socialMedia as $media)
+                            <a href="{{ $media->url }}" class="social-link" aria-label="{{ $media->name }}" target="_blank">
+                                <i class="{{ $media->icon }}"></i>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="footer-copyright text-center text-lg-end">
+                    <p class="copyright-text">BorderlessShopping &copy; {{ now()->year }} | All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="row">
+            <div class="col-12">
+                <div class="footer-bottom text-center">
+                    <p class="footer-tagline">Connecting Australia to Bangladesh, one package at a time.</p>
+                </div>
+            </div>
         </div>
     </div>
 </footer>

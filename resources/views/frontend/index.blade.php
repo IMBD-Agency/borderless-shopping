@@ -4,68 +4,168 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 reveal reveal-left">
+            <div class="row align-items-center flex-column-reverse flex-md-row">
+                <div class="col-lg-6 reveal reveal-left mt-4 mt-md-0">
+                    <div class="hero-badge mb-3">
+                        <span class="badge bg-accent-subtle text-accent px-3 py-2 rounded-pill">
+                            <i class="fa-solid fa-star me-1"></i>
+                            Trusted by 1,200+ customers
+                        </span>
+                    </div>
                     <h1 class="hero-title">Shop from Australian stores and ship to Bangladesh</h1>
-                    <p class="hero-subtitle">Just send us a link, we'll take care of the rest. Get your favorite Australian products delivered right to your doorstep in Bangladesh.</p>
-                    <a href="#order-form" class="btn btn-accent btn-lg me-3">
-                        <i class="fa-solid fa-rocket-launch"></i>
-                        Submit Order Request
-                    </a>
-                    <a href="#how-it-works" class="btn btn-outline-dark btn-lg">
-                        Learn More
-                    </a>
+                    <p class="hero-subtitle">Just send us a link, we'll take care of the rest. Get your favorite Australian products delivered right to your doorstep in Bangladesh with our secure and reliable service.</p>
+                    <div class="hero-actions">
+                        <a href="#order-form" class="btn btn-accent btn-lg">
+                            <i class="fa-solid fa-rocket-launch me-2"></i>
+                            Submit Order Request
+                        </a>
+                        <a href="#how-it-works" class="btn btn-outline-dark btn-lg">
+                            <i class="fa-solid fa-play me-2"></i>
+                            Watch How It Works
+                        </a>
+                    </div>
+                    <div class="hero-stats d-none d-md-block mt-4">
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <div class="stat-number">2,500+</div>
+                                <div class="stat-label">Orders Delivered</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-number">99.5%</div>
+                                <div class="stat-label">Success Rate</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-number">15+</div>
+                                <div class="stat-label">Cities Covered</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-6 reveal reveal-right">
-                    <div class="text-center">
-                        <img src="{{ asset('assets/images/shipping-vector.png') }}" alt="Shopping illustration" class="img-fluid float-slow">
+                    <div class="hero-image-container">
+                        <div class="hero-image-wrapper">
+                            <img src="{{ asset('assets/images/shipping-vector.png') }}" alt="Shopping illustration" class="img-fluid hero-image">
+                            <div class="floating-card card-1">
+                                <i class="fa-solid fa-truck text-accent"></i>
+                                <span>Fast Delivery</span>
+                            </div>
+                            <div class="floating-card card-2">
+                                <i class="fa-solid fa-shield-check text-accent"></i>
+                                <span>Secure Payment</span>
+                            </div>
+                            <div class="floating-card card-3">
+                                <i class="fa-solid fa-headset text-accent"></i>
+                                <span>24/7 Support</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
+    <!-- How It Works - Combined Video & Process -->
     <section id="how-it-works" class="py-5">
         <div class="container">
-            <h2 class="section-title">How It Works</h2>
+            <div class="text-center mb-5">
+                <h2 class="section-title">How It Works</h2>
+                <p class="lead text-muted">Simple steps to get your favorite Australian products delivered to Bangladesh</p>
+            </div>
+
+            <!-- Video Section -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <div class="video-container reveal reveal-up">
+                        <div class="video-thumbnail" data-bs-toggle="modal" data-bs-target="#videoModal">
+                            <img src="{{ asset('assets/images/shipping-vector.png') }}" alt="How BorderlessShopping Works" class="img-fluid">
+                            <div class="play-button">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+                            <div class="video-overlay">
+                                <h4>Watch Our Tutorial</h4>
+                                <p>See how easy it is to shop from Australia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Process Steps -->
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4 reveal">
-                    <div class="process-step">
-                        <div class="process-number">1</div>
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fa-solid fa-link"></i>
+                        </div>
+                        <div class="process-number">01</div>
                         <div class="process-arrow d-none d-lg-block">
                             <i class="fas fa-arrow-right"></i>
                         </div>
-                        <h4>Submit a Link</h4>
-                        <p class="text-muted">Provide the product link from any Australian online store along with quantity and shipping details.</p>
+                        <h4>Submit Product Link</h4>
+                        <p class="text-muted">Share the product URL from any Australian online store along with quantity and your shipping preferences.</p>
+                        <div class="process-features">
+                            <span class="feature-tag">Any Australian Store</span>
+                            <span class="feature-tag">Multiple Products</span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4 reveal" style="transition-delay: 120ms">
-                    <div class="process-step">
-                        <div class="process-number">2</div>
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <div class="process-number">02</div>
                         <div class="process-arrow d-none d-lg-block">
                             <i class="fas fa-arrow-right"></i>
                         </div>
-                        <h4>Get a Quote</h4>
-                        <p class="text-muted">Receive a quote with total cost including product price, shipping to Bangladesh, and our service fee.</p>
+                        <h4>Get Instant Quote</h4>
+                        <p class="text-muted">Receive a detailed quote with product price, shipping costs, and our dynamic service fee based on product type and quantity.</p>
+                        <div class="process-features">
+                            <span class="feature-tag">Dynamic Pricing</span>
+                            <span class="feature-tag">No Hidden Fees</span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4 reveal" style="transition-delay: 240ms">
-                    <div class="process-step">
-                        <div class="process-number">3</div>
-                        <h4>We Ship It</h4>
-                        <p class="text-muted">Place your order, make payment, and we'll purchase and ship the product directly to your address in Bangladesh.</p>
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <div class="process-number">03</div>
+                        <h4>We Handle Everything</h4>
+                        <p class="text-muted">We purchase, pack, and ship your products directly to your address in Bangladesh with full tracking.</p>
+                        <div class="process-features">
+                            <span class="feature-tag">Full Tracking</span>
+                            <span class="feature-tag">Secure Delivery</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content video-modal">
+                <div class="modal-header video-modal__header">
+                    <h5 class="modal-title" id="videoModalLabel">How BorderlessShopping Works</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="video-modal__frame">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="BorderlessShopping Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Order Form -->
     <section id="order-form" class="py-5 bg-light">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-xl-10 col-lg-11">
+                <div class="col-md-12">
                     <div class="order-form reveal reveal-up">
                         <h3 class="mb-4 text-center">Submit Product Request</h3>
                         <p class="text-muted text-center mb-4">Enter the product link and details below to get started.</p>
@@ -294,7 +394,7 @@
                                         <button type="submit" class="btn btn-accent btn-lg" id="submitBtn" style="display: none;">
                                             <span class="btn-text">
                                                 <i class="fa-regular fa-paper-plane"></i>
-                                                Submit Order Request
+                                                Submit Order
                                             </span>
                                         </button>
                                     </div>
@@ -310,33 +410,83 @@
     <!-- Features -->
     <section class="py-5">
         <div class="container">
-            <h2 class="section-title">Why Choose BorderlessShopping?</h2>
+            <div class="text-center mb-5">
+                <h2 class="section-title">Why Choose BorderlessShopping?</h2>
+                <p class="lead text-muted">Experience the best in cross-border shopping with our premium features</p>
+            </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4 reveal">
-                    <div class="feature-card text-center">
+                    <div class="feature-card text-center h-100">
                         <div class="feature-icon">
-                            <i class="fa-regular fa-shield-check"></i>
+                            <i class="fa-solid fa-shield-check"></i>
                         </div>
                         <h4>Secure & Reliable</h4>
-                        <p class="text-muted">Your orders are handled with complete security and reliability. We ensure safe delivery of your products.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 reveal" style="transition-delay: 120ms">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon">
-                            <i class="fa-regular fa-truck-arrow-right"></i>
+                        <p class="text-muted">Your orders are handled with complete security and reliability. We ensure safe delivery of your products with full insurance coverage.</p>
+                        <div class="feature-highlight">
+                            <span class="highlight-text">100% Secure</span>
                         </div>
-                        <h4>Fast Processing</h4>
-                        <p class="text-muted">Quick quote generation and order processing. Get your products delivered in the shortest possible time.</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4 reveal" style="transition-delay: 240ms">
-                    <div class="feature-card text-center">
+                <div class="col-lg-4 col-md-6 mb-4 reveal" style="transition-delay: 50ms">
+                    <div class="feature-card text-center h-100">
                         <div class="feature-icon">
-                            <i class="fa-regular fa-headset"></i>
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h4>Lightning Fast</h4>
+                        <p class="text-muted">Quick quote generation and order processing. Get your products delivered in the shortest possible time with our optimized workflow.</p>
+                        <div class="feature-highlight">
+                            <span class="highlight-text">Same Day Processing</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 reveal" style="transition-delay: 100ms">
+                    <div class="feature-card text-center h-100">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-headset"></i>
                         </div>
                         <h4>24/7 Support</h4>
-                        <p class="text-muted">Our customer support team is available round the clock to assist you with any queries or concerns.</p>
+                        <p class="text-muted">Our dedicated customer support team is available round the clock to assist you with any queries or concerns via multiple channels.</p>
+                        <div class="feature-highlight">
+                            <span class="highlight-text">Always Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 reveal">
+                    <div class="mini-feature-card text-center">
+                        <div class="mini-feature-icon">
+                            <i class="fa-solid fa-dollar-sign"></i>
+                        </div>
+                        <h6>Transparent Pricing</h6>
+                        <small class="text-muted">No hidden fees</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 reveal" style="transition-delay: 50ms">
+                    <div class="mini-feature-card text-center">
+                        <div class="mini-feature-icon">
+                            <i class="fa-solid fa-map-marker-alt"></i>
+                        </div>
+                        <h6>Nationwide Delivery</h6>
+                        <small class="text-muted">All over Bangladesh</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 reveal" style="transition-delay: 100ms">
+                    <div class="mini-feature-card text-center">
+                        <div class="mini-feature-icon">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+                        <h6>Careful Packaging</h6>
+                        <small class="text-muted">Protective wrapping</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 reveal" style="transition-delay: 150ms">
+                    <div class="mini-feature-card text-center">
+                        <div class="mini-feature-icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h6>Real-time Tracking</h6>
+                        <small class="text-muted">Track your order</small>
                     </div>
                 </div>
             </div>
@@ -347,30 +497,91 @@
     <section class="stats-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4 reveal">
+                <div class="col-md-3 col-6 mb-4 reveal">
                     <div class="stat-item">
-                        <span class="stat-number">2,500+</span>
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+                        <span class="stat-number" data-count="2500">0</span>
                         <div class="stat-label">Orders Delivered</div>
+                        <div class="stat-sublabel">and counting...</div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4 reveal" style="transition-delay: 120ms">
+                <div class="col-md-3 col-6 mb-4 reveal" style="transition-delay: 120ms">
                     <div class="stat-item">
-                        <span class="stat-number">1,200+</span>
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <span class="stat-number" data-count="1200">0</span>
                         <div class="stat-label">Happy Customers</div>
+                        <div class="stat-sublabel">and growing</div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4 reveal" style="transition-delay: 240ms">
+                <div class="col-md-3 col-6 mb-4 reveal" style="transition-delay: 240ms">
                     <div class="stat-item">
-                        <span class="stat-number">15+</span>
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-map-marker-alt"></i>
+                        </div>
+                        <span class="stat-number" data-count="15">0</span>
                         <div class="stat-label">Cities Covered</div>
+                        <div class="stat-sublabel">across Bangladesh</div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4 reveal" style="transition-delay: 360ms">
+                <div class="col-md-3 col-6 mb-4 reveal" style="transition-delay: 360ms">
                     <div class="stat-item">
-                        <span class="stat-number">99.5%</span>
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <span class="stat-number" data-count="99.5">0</span>
                         <div class="stat-label">Success Rate</div>
+                        <div class="stat-sublabel">guaranteed delivery</div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="lead text-muted">Real experiences from satisfied customers across Bangladesh</p>
+            </div>
+            <div class="row">
+                @forelse ($reviews as $review)
+                    <div class="col-lg-4 col-md-6 mb-4 reveal" style="transition-delay: {{ $loop->iteration * 50 }}ms">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="stars mb-3">
+                                    @php
+                                        $rating = (int) $review->rating;
+                                        $rating = max(0, min(5, $rating));
+                                    @endphp
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= $rating)
+                                            <i class="fa-solid fa-star text-warning" aria-hidden="true"></i>
+                                        @else
+                                            <i class="fa-regular fa-star text-warning" aria-hidden="true"></i>
+                                        @endif
+                                    @endfor
+                                </div>
+                                <p class="testimonial-text">"{{ $review->comment }}"</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="{{ asset('assets/images/reviews/' . $review->image) }}" alt="Customer" class="rounded-circle">
+                                </div>
+                                <div class="author-info">
+                                    <h6 class="author-name">{{ $review->name }}</h6>
+                                    <small class="author-location">{{ $review->location }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                @endforelse
+
             </div>
         </div>
     </section>
@@ -378,24 +589,70 @@
     <!-- Pricing -->
     <section id="pricing" class="py-5 bg-light">
         <div class="container">
-            <h2 class="section-title">Transparent Pricing</h2>
             <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="feature-card reveal reveal-up">
-                        <div class="row align-items-center">
-                            <div class="col-md-8">
-                                <h4>Service Fee: <span class="text-accent">Only 12%</span> + Shipping</h4>
-                                <p class="text-muted mb-2">We now charge just a 12% service fee on the product price plus actual shipping costs. Transparent pricing, no surprises.</p>
-                                <ul class="list-unstyled">
-                                    <li><i class="fas fa-check text-success me-2"></i>Product Price (as shown on store)</li>
-                                    <li><i class="fas fa-check text-success me-2"></i>12% Service Fee</li>
-                                    <li><i class="fas fa-check text-success me-2"></i>Shipping Cost (Australia to Bangladesh)</li>
-                                    <li><i class="fas fa-check text-success me-2"></i>No Hidden Charges</li>
-                                </ul>
+                <div class="col-md-12">
+                    <div class="pricing-card reveal reveal-up" style="transition-delay: 50ms">
+                        <div class="pricing-header text-center mb-4">
+                            <div class="pricing-badge mb-3">
+                                <span class="badge bg-success-subtle text-success px-4 py-2 rounded-pill">
+                                    <i class="fa-solid fa-check me-2"></i>
+                                    Best Value
+                                </span>
                             </div>
-                            <div class="col-md-4 text-center">
-                                <div class="display-6 text-accent fw-bold">12%</div>
-                                <div class="text-muted">Service Fee</div>
+                            <h3 class="pricing-title">Transparent <span class="text-accent">Dynamic Pricing</span></h3>
+                            <p class="pricing-description">Our service fee varies based on product type, quantity, and complexity. We provide detailed quotes with no hidden charges.</p>
+                        </div>
+
+                        <div class="pricing-breakdown">
+                            <div class="row g-4">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="pricing-item">
+                                        <div class="pricing-item-icon">
+                                            <i class="fa-solid fa-tag"></i>
+                                        </div>
+                                        <h5 class="pricing-item-title">Product Price</h5>
+                                        <p class="pricing-item-desc">As shown on the Australian store</p>
+                                        <div class="pricing-item-highlight">No markup</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="pricing-item featured">
+                                        <div class="pricing-item-icon">
+                                            <i class="fa-solid fa-calculator"></i>
+                                        </div>
+                                        <h5 class="pricing-item-title">Service Fee</h5>
+                                        <p class="pricing-item-desc">Based on product type & quantity</p>
+                                        <div class="pricing-item-highlight">Dynamic pricing</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="pricing-item">
+                                        <div class="pricing-item-icon">
+                                            <i class="fa-solid fa-truck"></i>
+                                        </div>
+                                        <h5 class="pricing-item-title">Shipping Cost</h5>
+                                        <p class="pricing-item-desc">Australia to Bangladesh</p>
+                                        <div class="pricing-item-highlight">Actual cost</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pricing-guarantee">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h6 class="guarantee-title">
+                                        <i class="fa-solid fa-shield-check text-success"></i>
+                                        Our Pricing Guarantee
+                                    </h6>
+                                    <p class="guarantee-text">We provide detailed quotes upfront with no hidden fees. What you see is what you pay.</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="guarantee-badge">
+                                        <i class="fa-solid fa-lock"></i>
+                                        <span>100% Transparent</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -405,25 +662,43 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="py-5">
+    <section id="contact" class="py-5 bg-light">
         <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="lead text-muted">Have questions? We're here to help you with your shopping needs.</p>
+            </div>
             <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="section-title">Get In Touch</h2>
-                    <p class="lead text-muted mb-4">Have questions? We're here to help you with your shopping needs.</p>
+                <div class="col-lg-12">
                     <div class="row">
-                        <div class="col-md-6 mb-3 reveal">
-                            <div class="feature-card text-center">
-                                <i class="fas fa-envelope fa-2x text-accent mb-3"></i>
-                                <h5>Email</h5>
-                                <p class="text-muted">support@borderlessshopping.com</p>
+                        <div class="col-md-4 mb-4 reveal">
+                            <div class="contact-card text-center">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <h5>Email Support</h5>
+                                <p class="text-muted">Get help via email</p>
+                                <a href="mailto:{{ $contact_details->email }}" class="contact-link">{{ $contact_details->email }}</a>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3 reveal" style="transition-delay: 120ms">
-                            <div class="feature-card text-center">
-                                <i class="fas fa-phone fa-2x text-accent mb-3"></i>
-                                <h5>Phone</h5>
-                                <p class="text-muted">+880 1234-567890</p>
+                        <div class="col-md-4 mb-4 reveal" style="transition-delay: 120ms">
+                            <div class="contact-card text-center">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <h5>Phone Support</h5>
+                                <p class="text-muted">Call us directly</p>
+                                <a href="tel:{{ $contact_details->phone }}" class="contact-link">{{ $contact_details->phone }}</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 reveal" style="transition-delay: 240ms">
+                            <div class="contact-card text-center">
+                                <div class="contact-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <h5>WhatsApp</h5>
+                                <p class="text-muted">Quick chat support</p>
+                                <a href="https://wa.me/{{ str_replace('+', '', $contact_details->whatsapp) }}" class="contact-link">{{ $contact_details->whatsapp }}</a>
                             </div>
                         </div>
                     </div>

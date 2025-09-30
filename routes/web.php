@@ -3,6 +3,7 @@
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -70,6 +71,14 @@ Route::group(['prefix' => 'dashboard', 'as' => 'backend.', 'middleware' => ['aut
 
     //settings
     Route::get('/settings', [BackendController::class, 'settings'])->name('settings');
+    Route::post('/settings/contact', [BackendController::class, 'updateContact'])->name('settings.contact.update');
+    Route::post('/settings/social-media', [BackendController::class, 'updateSocialMedia'])->name('settings.social-media.update');
+
+    // reviews
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+    Route::get('/reviews/create', [ReviewController::class, 'create'])->name('reviews.create');
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::get('/reviews/delete/{id}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 
     //debug routes
     Route::get('/debug', [BackendController::class, 'debug'])->name('debug');

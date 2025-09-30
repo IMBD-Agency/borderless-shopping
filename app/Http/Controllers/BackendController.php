@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Mail\OrderReceivedAdminNotificationMail;
 use App\Mail\OrderReceivedThankyouMail;
+use App\Models\Contact;
+use App\Models\SocialMedia;
 use App\Models\OrderRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -181,7 +183,73 @@ class BackendController extends Controller {
      * @return \Illuminate\View\View
      */
     public function settings() {
-        return view('backend.settings.index');
+        $contact = Contact::first();
+        $socialMedia = SocialMedia::orderBy('id')->get();
+
+        return view('backend.settings', compact('contact', 'socialMedia'));
+    }
+
+    /**
+     * Update contact information.
+     */
+    public function updateContact(Request $request) {
+        $validated = $request->validate([
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'string', 'max:255'],
+            'whatsapp' => ['required', 'string', 'max:255'],
+        ]);
+
+        $contact = Contact::first();
+        if ($contact) {
+            $contact->update($validated);
+        } else {
+            Contact::create($validated);
+        }
+
+        return back()->with('success', 'Contact information updated successfully.');
+    }
+
+    /**
+     * Update social media links (bulk update/create by rows).
+     */
+    public function updateSocialMedia(Request $request) {
+        $validated = $request->validate([
+            'items' => ['required', 'array'],
+            'items.*.id' => ['nullable', 'integer', 'exists:social_media,id'],
+            'items.*.name' => ['nullable', 'string', 'max:255'],
+            'items.*.url' => ['nullable', 'url', 'max:255'],
+            'items.*.icon' => ['nullable', 'string', 'max:255'],
+            'items.*._delete' => ['nullable', 'boolean'],
+        ]);
+
+        foreach ($validated['items'] as $item) {
+            $markedForDeletion = isset($item['_delete']) && (int) $item['_delete'] === 1;
+            if (!empty($item['id'])) {
+                if ($markedForDeletion) {
+                    SocialMedia::where('id', $item['id'])->delete();
+                    continue;
+                }
+                // Update existing
+                if (!empty($item['name']) && !empty($item['url']) && !empty($item['icon'])) {
+                    SocialMedia::where('id', $item['id'])->update([
+                        'name' => $item['name'],
+                        'url' => $item['url'],
+                        'icon' => $item['icon'],
+                    ]);
+                }
+            } else {
+                // Create new only if all fields present and not marked for delete
+                if (!$markedForDeletion && !empty($item['name']) && !empty($item['url']) && !empty($item['icon'])) {
+                    SocialMedia::create([
+                        'name' => $item['name'],
+                        'url' => $item['url'],
+                        'icon' => $item['icon'],
+                    ]);
+                }
+            }
+        }
+
+        return back()->with('success', 'Social media updated successfully.');
     }
 
     public function debug() {

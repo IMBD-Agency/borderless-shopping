@@ -124,18 +124,6 @@
                         <div class="row"><span class="label">Address</span><span class="value">{{ $order->recipient_address }}</span></div>
                         <div class="row"><span class="label">Tracking Number</span><span class="value">{{ $order->tracking_number }}</span></div>
                         <div class="row"><span class="label">Placed On</span><span class="value">{{ $order->created_at->format('M d, Y h:i A') }}</span></div>
-                        @php
-                            $total = $order->total_amount;
-                            $paid = $order->total_paid_amount ?? 0;
-                            $due = max(0, (float) ($total ?? 0) - (float) $paid);
-                        @endphp
-                        @if ($total)
-                            <div class="row"><span class="label">Total</span><span class="value">{{ number_format($total, 2) }} BDT</span></div>
-                            <div class="row"><span class="label">Paid</span><span class="value">{{ number_format($paid, 2) }} BDT</span></div>
-                            <div class="row"><span class="label">Due</span><span class="value">{{ number_format($due, 2) }} BDT</span></div>
-                        @endif
-                        <div class="row"><span class="label">Status</span><span class="value">{{ ucwords(str_replace('_', ' ', $order->status)) }}</span></div>
-                        <div class="row"><span class="label">Payment Status</span><span class="value">{{ ucfirst($order->payment_status) }}</span></div>
                     </div>
 
                     <div class="cta">

@@ -37,6 +37,13 @@
                 </li>
 
                 <li class="sidebar-nav-item">
+                    <a href="{{ route('backend.reviews.index') }}" class="sidebar-nav-link {{ request()->routeIs('backend.reviews*') ? 'active' : '' }}">
+                        <i class="fas fa-star"></i>
+                        <span class="sidebar-nav-text">Reviews</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-nav-item">
                     <a href="{{ route('backend.settings') }}" class="sidebar-nav-link {{ request()->routeIs('backend.settings*') ? 'active' : '' }}">
                         <i class="fas fa-cog"></i>
                         <span class="sidebar-nav-text">Settings</span>
