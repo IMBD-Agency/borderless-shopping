@@ -23,7 +23,6 @@
                 <thead>
                     <tr>
                         <th>User</th>
-                        <th>Mobile</th>
                         <th>Email</th>
                         <th>Status</th>
                         <th>Last Login</th>
@@ -44,7 +43,6 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>{{ $user->mobile }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
                                 <span class="badge {{ $user->status == 'active' ? 'bg-success' : 'bg-danger' }}">

@@ -13,11 +13,10 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('image')->default('blank-profile.jpg');
-            $table->string('mobile')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role', ['super_admin', 'admin', 'client'])->default('client');
+            $table->enum('role', ['super_admin', 'admin', 'customer'])->default('customer');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('last_login_at')->nullable();
             $table->boolean('send_notification')->default(false);

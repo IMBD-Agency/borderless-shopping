@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder {
         // Run our custom seeders
         $this->call([
             UserSeeder::class,
+            DistrictsAndSubCitiesSeeder::class,
         ]);
     }
 }

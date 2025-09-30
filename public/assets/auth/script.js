@@ -20,7 +20,7 @@ function initializePasswordToggles() {
 
     passwordToggles.forEach(toggle => {
         toggle.addEventListener('click', function () {
-            const input = this.previousElementSibling;
+            const input = this.parentNode.querySelector('input');
             const icon = this.querySelector('i');
 
             if (input.type === 'password') {

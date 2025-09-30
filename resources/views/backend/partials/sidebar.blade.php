@@ -18,22 +18,31 @@
                 </a>
             </li>
 
-            <li class="sidebar-nav-item">
-                <a href="{{ route('backend.users.index') }}" class="sidebar-nav-link {{ request()->routeIs('backend.users*') ? 'active' : '' }}">
-                    <i class="fas fa-users"></i>
-                    <span class="sidebar-nav-text">Users</span>
-                </a>
-            </li>
+            @if (isSuperAdmin() || isAdmin())
+                <!-- Management Section -->
+                <div class="sidebar-section">Management</div>
 
-            <!-- Management Section -->
-            <div class="sidebar-section">Management</div>
+                <li class="sidebar-nav-item">
+                    <a href="{{ route('backend.orders.index') }}" class="sidebar-nav-link {{ request()->routeIs('backend.orders*') ? 'active' : '' }}">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="sidebar-nav-text">Orders</span>
+                    </a>
+                </li>
 
-            <li class="sidebar-nav-item">
-                <a href="{{ route('backend.settings') }}" class="sidebar-nav-link {{ request()->routeIs('backend.settings*') ? 'active' : '' }}">
-                    <i class="fas fa-cog"></i>
-                    <span class="sidebar-nav-text">Settings</span>
-                </a>
-            </li>
+                <li class="sidebar-nav-item">
+                    <a href="{{ route('backend.users.index') }}" class="sidebar-nav-link {{ request()->routeIs('backend.users*') ? 'active' : '' }}">
+                        <i class="fas fa-users"></i>
+                        <span class="sidebar-nav-text">Users</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-nav-item">
+                    <a href="{{ route('backend.settings') }}" class="sidebar-nav-link {{ request()->routeIs('backend.settings*') ? 'active' : '' }}">
+                        <i class="fas fa-cog"></i>
+                        <span class="sidebar-nav-text">Settings</span>
+                    </a>
+                </li>
+            @endif
         </ul>
     </nav>
 </div>

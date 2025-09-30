@@ -48,7 +48,6 @@ class RegisterController extends Controller {
     protected function validator(array $data) {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'mobile' => ['required', 'string', 'max:20', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'send_notification' => ['boolean'],
@@ -64,10 +63,9 @@ class RegisterController extends Controller {
     protected function create(array $data) {
         return User::create([
             'name' => $data['name'],
-            'mobile' => $data['mobile'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => 'client', // Default role for new registrations
+            'role' => 'student', // Default role for new registrations
             'status' => 'active', // Default status for new registrations
             'send_notification' => isset($data['send_notification']) ? (bool) $data['send_notification'] : false,
         ]);

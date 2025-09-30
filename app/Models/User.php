@@ -60,4 +60,47 @@ class User extends Authenticatable {
     public function isInactive(): bool {
         return $this->status === 'inactive';
     }
+
+    /**
+     * Get the order requests for the user
+     */
+    public function orderRequests() {
+        return $this->hasMany(OrderRequest::class);
+    }
+
+    /**
+     * Check if the user is a super admin
+     *
+     * @return bool
+     */
+    public function isSuperAdmin(): bool {
+        return $this->role === 'super_admin';
+    }
+
+    /**
+     * Check if the user is an admin
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Check if the user is a customer
+     *
+     * @return bool
+     */
+    public function isCustomer(): bool {
+        return $this->role === 'customer';
+    }
+
+    /**
+     * Check if the user has admin privileges (super_admin or admin)
+     *
+     * @return bool
+     */
+    public function hasAdminPrivileges(): bool {
+        return in_array($this->role, ['super_admin', 'admin']);
+    }
 }

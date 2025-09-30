@@ -84,4 +84,23 @@ class LoginController extends Controller {
         return $this->authenticated($request, $this->guard()->user())
             ?: redirect()->intended($this->redirectPath());
     }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user) {
+        // Redirect based on user role
+        if ($user->hasAdminPrivileges()) {
+            return redirect()->route('backend.dashboard');
+        } elseif ($user->isCustomer()) {
+            return redirect()->route('user.dashboard');
+        }
+
+        // Fallback to default redirect
+        return redirect($this->redirectPath());
+    }
 }

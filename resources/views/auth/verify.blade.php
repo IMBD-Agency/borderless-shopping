@@ -3,7 +3,7 @@
 @section('content')
     <div class="auth-header">
         <div class="auth-logo">
-            <img src="{{ asset('assets/images/logos/code-nest-icon-round-48.png') }}" alt="{{ config('app.name') }}">
+            <img src="{{ asset('assets/images/logos/borderless-logo-icon.png') }}" alt="{{ config('app.name') }}">
         </div>
         <h1 class="auth-title">{{ __('Verify Your Email') }}</h1>
         <p class="auth-subtitle">{{ __('Please verify your email address to continue') }}</p>

@@ -1,0 +1,948 @@
+{
+    "bangladesh": {
+        "divisions": [
+            {
+                "name": "Dhaka",
+                "districts": [
+                    {
+                        "name": "Dhaka",
+                        "sub_cities": [
+                            "Dhanmondi",
+                            "Gulshan",
+                            "Banani",
+                            "Uttara",
+                            "Wari",
+                            "Ramna",
+                            "Motijheel",
+                            "Paltan",
+                            "Shahbagh",
+                            "New Market",
+                            "Farmgate",
+                            "Tejgaon",
+                            "Kotwali",
+                            "Lalbagh",
+                            "Sutrapur",
+                            "Sabujbagh",
+                            "Cantonment",
+                            "Demra",
+                            "Dohar",
+                            "Dhamrai",
+                            "Keraniganj",
+                            "Nawabganj",
+                            "Savar",
+                            "Mohammadpur",
+                            "Badda",
+                            "Khilgaon",
+                            "Kafrul",
+                            "Pallabi",
+                            "Jatrabari",
+                            "Shyampur",
+                            "Kadamtali",
+                            "Hazaribagh",
+                            "Kamrangirchar",
+                            "Bimanbandar",
+                            "Adabor",
+                            "Bhashantek",
+                            "Basabo",
+                            "Kalyanpur",
+                            "Khilkhet",
+                            "Dakshinkhan",
+                            "Uttarkhan",
+                            "Shahjadpur",
+                            "Niketan",
+                            "Baridhara",
+                            "Banasree",
+                            "Malibagh",
+                            "Moghbazar",
+                            "Rampura",
+                            "Banani DOHS",
+                            "Mohakhali",
+                            "Aftabnagar",
+                            "Bashundhara",
+                            "Kalabagan",
+                            "Karwan Bazar",
+                            "Panthapath",
+                            "Hatirpool",
+                            "Eskaton",
+                            "Kakrail",
+                            "Shantinagar",
+                            "Banglamotor",
+                            "Kamalapur",
+                            "Tikatuli",
+                            "Gandaria",
+                            "Jurain",
+                            "Shyamoli",
+                            "Agargaon",
+                            "Sher-e-Bangla Nagar",
+                            "Segunbagicha",
+                            "Nilkhet",
+                            "Azimpur",
+                            "Mirpur DOHS",
+                            "Mohakhali DOHS",
+                            "Baridhara DOHS",
+                            "Nikunja 1",
+                            "Nikunja 2",
+                            "Kuril",
+                            "Bhatara",
+                            "Satarkul",
+                            "Middle Badda",
+                            "South Badda",
+                            "North Badda",
+                            "Hatirjheel",
+                            "Mouchak",
+                            "Rajarbagh",
+                            "Shukrabad",
+                            "Science Laboratory",
+                            "Tejturi Bazar",
+                            "Nakhalpara",
+                            "Shewrapara",
+                            "Kazipara",
+                            "Ibrahimpur",
+                            "Monipuripara",
+                            "Mirpur-1",
+                            "Mirpur-2",
+                            "Mirpur-6",
+                            "Mirpur-10",
+                            "Mirpur-11",
+                            "Mirpur-12",
+                            "Kalachandpur",
+                            "Kochukhet",
+                            "Matikata",
+                            "Shahjahanpur",
+                            "Naya Paltan"
+                        ]
+                    },
+                    {
+                        "name": "Gazipur",
+                        "sub_cities": [
+                            "Gazipur Sadar",
+                            "Kaliakair",
+                            "Kapasia",
+                            "Sreepur",
+                            "Tongi"
+                        ]
+                    },
+                    {
+                        "name": "Narayanganj",
+                        "sub_cities": [
+                            "Narayanganj Sadar",
+                            "Araihazar",
+                            "Bandar",
+                            "Rupganj",
+                            "Sonargaon"
+                        ]
+                    },
+                    {
+                        "name": "Tangail",
+                        "sub_cities": [
+                            "Tangail Sadar",
+                            "Basail",
+                            "Bhuapur",
+                            "Delduar",
+                            "Ghatail",
+                            "Gopalganj",
+                            "Kalihati",
+                            "Madhupur",
+                            "Mirzapur",
+                            "Nagarpur",
+                            "Sakhipur"
+                        ]
+                    },
+                    {
+                        "name": "Kishoreganj",
+                        "sub_cities": [
+                            "Kishoreganj Sadar",
+                            "Austagram",
+                            "Bajitpur",
+                            "Bhairab",
+                            "Hossainpur",
+                            "Itna",
+                            "Karimganj",
+                            "Katiadi",
+                            "Kuliarchar",
+                            "Mithamain",
+                            "Nikli",
+                            "Pakundia",
+                            "Tarail"
+                        ]
+                    },
+                    {
+                        "name": "Manikganj",
+                        "sub_cities": [
+                            "Manikganj Sadar",
+                            "Daulatpur",
+                            "Ghior",
+                            "Harirampur",
+                            "Saturia",
+                            "Shibalaya",
+                            "Singair"
+                        ]
+                    },
+                    {
+                        "name": "Munshiganj",
+                        "sub_cities": [
+                            "Munshiganj Sadar",
+                            "Gazaria",
+                            "Lohajang",
+                            "Sirajdikhan",
+                            "Sreenagar",
+                            "Tongibari"
+                        ]
+                    },
+                    {
+                        "name": "Narsingdi",
+                        "sub_cities": [
+                            "Narsingdi Sadar",
+                            "Belabo",
+                            "Monohardi",
+                            "Palash",
+                            "Raipura",
+                            "Shibpur"
+                        ]
+                    },
+                    {
+                        "name": "Rajbari",
+                        "sub_cities": [
+                            "Rajbari Sadar",
+                            "Baliakandi",
+                            "Goalandaghat",
+                            "Pangsha",
+                            "Kalukhali"
+                        ]
+                    },
+                    {
+                        "name": "Shariatpur",
+                        "sub_cities": [
+                            "Shariatpur Sadar",
+                            "Bhedarganj",
+                            "Damudya",
+                            "Gosairhat",
+                            "Naria",
+                            "Zajira"
+                        ]
+                    },
+                    {
+                        "name": "Faridpur",
+                        "sub_cities": [
+                            "Faridpur Sadar",
+                            "Alfadanga",
+                            "Bhanga",
+                            "Boalmari",
+                            "Charbhadrasan",
+                            "Madhukhali",
+                            "Nagarkanda",
+                            "Sadarpur",
+                            "Saltha"
+                        ]
+                    },
+                    {
+                        "name": "Gopalganj",
+                        "sub_cities": [
+                            "Gopalganj Sadar",
+                            "Kashiani",
+                            "Kotalipara",
+                            "Muksudpur",
+                            "Tungipara"
+                        ]
+                    },
+                    {
+                        "name": "Madaripur",
+                        "sub_cities": [
+                            "Madaripur Sadar",
+                            "Kalkini",
+                            "Rajoir",
+                            "Shibchar"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Chittagong",
+                "districts": [
+                    {
+                        "name": "Chittagong",
+                        "sub_cities": [
+                            "Chittagong Sadar",
+                            "Anwara",
+                            "Banshkhali",
+                            "Boalkhali",
+                            "Chandanaish",
+                            "Fatikchhari",
+                            "Hathazari",
+                            "Lohagara",
+                            "Mirsharai",
+                            "Patiya",
+                            "Rangunia",
+                            "Raozan",
+                            "Sandwip",
+                            "Satkania",
+                            "Sitakunda"
+                        ]
+                    },
+                    {
+                        "name": "Cox's Bazar",
+                        "sub_cities": [
+                            "Cox's Bazar Sadar",
+                            "Chakaria",
+                            "Eidgaon",
+                            "Kutubdia",
+                            "Maheshkhali",
+                            "Pekua",
+                            "Ramu",
+                            "Teknaf",
+                            "Ukhia"
+                        ]
+                    },
+                    {
+                        "name": "Bandarban",
+                        "sub_cities": [
+                            "Bandarban Sadar",
+                            "Alikadam",
+                            "Lama",
+                            "Naikhongchhari",
+                            "Raja",
+                            "Ruma",
+                            "Thanchi"
+                        ]
+                    },
+                    {
+                        "name": "Rangamati",
+                        "sub_cities": [
+                            "Rangamati Sadar",
+                            "Baghaichhari",
+                            "Barkal",
+                            "Belaichhari",
+                            "Juraichhari",
+                            "Kaptai",
+                            "Kawkhali",
+                            "Langadu",
+                            "Naniarchar",
+                            "Rajasthali"
+                        ]
+                    },
+                    {
+                        "name": "Noakhali",
+                        "sub_cities": [
+                            "Noakhali Sadar",
+                            "Begumganj",
+                            "Chatkhil",
+                            "Companiganj",
+                            "Hatiya",
+                            "Kabirhat",
+                            "Senbagh",
+                            "Sonaimuri",
+                            "Subarnachar"
+                        ]
+                    },
+                    {
+                        "name": "Feni",
+                        "sub_cities": [
+                            "Feni Sadar",
+                            "Chhagalnaiya",
+                            "Daganbhuiyan",
+                            "Parshuram",
+                            "Sonagazi"
+                        ]
+                    },
+                    {
+                        "name": "Lakshmipur",
+                        "sub_cities": [
+                            "Lakshmipur Sadar",
+                            "Kamalnagar",
+                            "Ramganj",
+                            "Ramgati",
+                            "Raipur"
+                        ]
+                    },
+                    {
+                        "name": "Chandpur",
+                        "sub_cities": [
+                            "Chandpur Sadar",
+                            "Faridganj",
+                            "Haimchar",
+                            "Hajiganj",
+                            "Kachua",
+                            "Matlab Dakshin",
+                            "Matlab Uttar",
+                            "Shahrasti"
+                        ]
+                    },
+                    {
+                        "name": "Comilla",
+                        "sub_cities": [
+                            "Comilla Sadar",
+                            "Barura",
+                            "Brahmanpara",
+                            "Burichang",
+                            "Chandina",
+                            "Chauddagram",
+                            "Daudkandi",
+                            "Debidwar",
+                            "Homna",
+                            "Laksam",
+                            "Monohargonj",
+                            "Meghna",
+                            "Muradnagar",
+                            "Nangalkot",
+                            "Titas"
+                        ]
+                    },
+                    {
+                        "name": "Brahmanbaria",
+                        "sub_cities": [
+                            "Brahmanbaria Sadar",
+                            "Akhaura",
+                            "Bancharampur",
+                            "Kasba",
+                            "Nabinagar",
+                            "Nasirnagar",
+                            "Sarail"
+                        ]
+                    },
+                    {
+                        "name": "Khagrachhari",
+                        "sub_cities": [
+                            "Khagrachhari Sadar",
+                            "Dighinala",
+                            "Lakshmichhari",
+                            "Mahalchhari",
+                            "Manikchhari",
+                            "Matiranga",
+                            "Panchhari",
+                            "Ramgarh"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Rajshahi",
+                "districts": [
+                    {
+                        "name": "Rajshahi",
+                        "sub_cities": [
+                            "Rajshahi Sadar",
+                            "Bagha",
+                            "Bagmara",
+                            "Charghat",
+                            "Durgapur",
+                            "Godagari",
+                            "Mohanpur",
+                            "Paba",
+                            "Puthia",
+                            "Tanore"
+                        ]
+                    },
+                    {
+                        "name": "Bogra",
+                        "sub_cities": [
+                            "Bogra Sadar",
+                            "Adamdighi",
+                            "Dhunat",
+                            "Dupchanchia",
+                            "Gabtali",
+                            "Kahaloo",
+                            "Nandigram",
+                            "Sariakandi",
+                            "Shibganj",
+                            "Sonatala"
+                        ]
+                    },
+                    {
+                        "name": "Pabna",
+                        "sub_cities": [
+                            "Pabna Sadar",
+                            "Atgharia",
+                            "Bera",
+                            "Bhangura",
+                            "Chatmohar",
+                            "Faridpur",
+                            "Ishwardi",
+                            "Pabna Sadar",
+                            "Santhia",
+                            "Sujanagar"
+                        ]
+                    },
+                    {
+                        "name": "Natore",
+                        "sub_cities": [
+                            "Natore Sadar",
+                            "Bagatipara",
+                            "Baraigram",
+                            "Gurudaspur",
+                            "Lalpur",
+                            "Singra"
+                        ]
+                    },
+                    {
+                        "name": "Sirajganj",
+                        "sub_cities": [
+                            "Sirajganj Sadar",
+                            "Belkuchi",
+                            "Chauhali",
+                            "Kamarkhanda",
+                            "Kazipur",
+                            "Raiganj",
+                            "Shahjadpur",
+                            "Tarash",
+                            "Ullahpara"
+                        ]
+                    },
+                    {
+                        "name": "Naogaon",
+                        "sub_cities": [
+                            "Naogaon Sadar",
+                            "Atrai",
+                            "Badalgachhi",
+                            "Dhamoirhat",
+                            "Manda",
+                            "Mohadevpur",
+                            "Niamatpur",
+                            "Patnitala",
+                            "Porsha",
+                            "Raninagar",
+                            "Sapahar"
+                        ]
+                    },
+                    {
+                        "name": "Joypurhat",
+                        "sub_cities": [
+                            "Joypurhat Sadar",
+                            "Akkelpur",
+                            "Khetlal",
+                            "Panchbibi",
+                            "Kalai"
+                        ]
+                    },
+                    {
+                        "name": "Chapai Nawabganj",
+                        "sub_cities": [
+                            "Chapai Nawabganj Sadar",
+                            "Bholahat",
+                            "Gomastapur",
+                            "Nachole",
+                            "Shibganj"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Khulna",
+                "districts": [
+                    {
+                        "name": "Khulna",
+                        "sub_cities": [
+                            "Khulna Sadar",
+                            "Batiaghata",
+                            "Dacope",
+                            "Dakop",
+                            "Dumuria",
+                            "Dighalia",
+                            "Koyra",
+                            "Paikgachha",
+                            "Phultala",
+                            "Rupsa",
+                            "Terokhada"
+                        ]
+                    },
+                    {
+                        "name": "Jessore",
+                        "sub_cities": [
+                            "Jessore Sadar",
+                            "Abhaynagar",
+                            "Bagherpara",
+                            "Chaugachha",
+                            "Jhikargachha",
+                            "Keshabpur",
+                            "Manirampur",
+                            "Sharsha"
+                        ]
+                    },
+                    {
+                        "name": "Satkhira",
+                        "sub_cities": [
+                            "Satkhira Sadar",
+                            "Assasuni",
+                            "Debhata",
+                            "Kalaroa",
+                            "Kaliganj",
+                            "Patkelghata",
+                            "Shyamnagar",
+                            "Tala"
+                        ]
+                    },
+                    {
+                        "name": "Meherpur",
+                        "sub_cities": [
+                            "Meherpur Sadar",
+                            "Gangni",
+                            "Mujibnagar"
+                        ]
+                    },
+                    {
+                        "name": "Narail",
+                        "sub_cities": [
+                            "Narail Sadar",
+                            "Kalia",
+                            "Lohagara"
+                        ]
+                    },
+                    {
+                        "name": "Chuadanga",
+                        "sub_cities": [
+                            "Chuadanga Sadar",
+                            "Alamdanga",
+                            "Damurhuda",
+                            "Jibannagar"
+                        ]
+                    },
+                    {
+                        "name": "Kushtia",
+                        "sub_cities": [
+                            "Kushtia Sadar",
+                            "Bheramara",
+                            "Daulatpur",
+                            "Khoksa",
+                            "Kumarkhali",
+                            "Mirpur"
+                        ]
+                    },
+                    {
+                        "name": "Magura",
+                        "sub_cities": [
+                            "Magura Sadar",
+                            "Mohammadpur",
+                            "Shalikha",
+                            "Sreepur"
+                        ]
+                    },
+                    {
+                        "name": "Jhenaidah",
+                        "sub_cities": [
+                            "Jhenaidah Sadar",
+                            "Harinakunda",
+                            "Kaliganj",
+                            "Kotchandpur",
+                            "Maheshpur",
+                            "Shailkupa"
+                        ]
+                    },
+                    {
+                        "name": "Bagerhat",
+                        "sub_cities": [
+                            "Bagerhat Sadar",
+                            "Chitalmari",
+                            "Fakirhat",
+                            "Kachua",
+                            "Mollahat",
+                            "Mongla",
+                            "Morrelganj",
+                            "Rampal",
+                            "Sarankhola"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Barisal",
+                "districts": [
+                    {
+                        "name": "Barisal",
+                        "sub_cities": [
+                            "Barisal Sadar",
+                            "Agailjhara",
+                            "Babuganj",
+                            "Bakerganj",
+                            "Banaripara",
+                            "Gaurnadi",
+                            "Hizla",
+                            "Mehendiganj",
+                            "Muladi",
+                            "Wazirpur"
+                        ]
+                    },
+                    {
+                        "name": "Pirojpur",
+                        "sub_cities": [
+                            "Pirojpur Sadar",
+                            "Bhandaria",
+                            "Kawkhali",
+                            "Mathbaria",
+                            "Nazirpur",
+                            "Nesarabad",
+                            "Zianagar"
+                        ]
+                    },
+                    {
+                        "name": "Barguna",
+                        "sub_cities": [
+                            "Barguna Sadar",
+                            "Amtali",
+                            "Bamna",
+                            "Betagi",
+                            "Patharghata",
+                            "Taltali"
+                        ]
+                    },
+                    {
+                        "name": "Bhola",
+                        "sub_cities": [
+                            "Bhola Sadar",
+                            "Borhanuddin",
+                            "Char Fasson",
+                            "Daulatkhan",
+                            "Lalmohan",
+                            "Manpura",
+                            "Tazumuddin"
+                        ]
+                    },
+                    {
+                        "name": "Jhalokati",
+                        "sub_cities": [
+                            "Jhalokati Sadar",
+                            "Kathalia",
+                            "Nalchity",
+                            "Rajapur"
+                        ]
+                    },
+                    {
+                        "name": "Patuakhali",
+                        "sub_cities": [
+                            "Patuakhali Sadar",
+                            "Bauphal",
+                            "Dashmina",
+                            "Dumki",
+                            "Galachipa",
+                            "Kalapara",
+                            "Mirzaganj",
+                            "Rangabali"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Sylhet",
+                "districts": [
+                    {
+                        "name": "Sylhet",
+                        "sub_cities": [
+                            "Sylhet Sadar",
+                            "Balaganj",
+                            "Beanibazar",
+                            "Bishwanath",
+                            "Companigonj",
+                            "Fenchuganj",
+                            "Golapganj",
+                            "Gowainghat",
+                            "Jaintiapur",
+                            "Kanaighat",
+                            "Osmani Nagar",
+                            "Zakiganj"
+                        ]
+                    },
+                    {
+                        "name": "Moulvibazar",
+                        "sub_cities": [
+                            "Moulvibazar Sadar",
+                            "Barlekha",
+                            "Juri",
+                            "Kamalganj",
+                            "Kulaura",
+                            "Rajnagar",
+                            "Sreemangal"
+                        ]
+                    },
+                    {
+                        "name": "Habiganj",
+                        "sub_cities": [
+                            "Habiganj Sadar",
+                            "Ajmiriganj",
+                            "Bahubal",
+                            "Baniyachong",
+                            "Chunarughat",
+                            "Lakhai",
+                            "Madhabpur",
+                            "Nabiganj",
+                            "Shaistaganj"
+                        ]
+                    },
+                    {
+                        "name": "Sunamganj",
+                        "sub_cities": [
+                            "Sunamganj Sadar",
+                            "Bishwamvarpur",
+                            "Chhatak",
+                            "Derai",
+                            "Dharampasha",
+                            "Dowarabazar",
+                            "Jagannathpur",
+                            "Jamalganj",
+                            "Sullah",
+                            "Tahirpur"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Rangpur",
+                "districts": [
+                    {
+                        "name": "Rangpur",
+                        "sub_cities": [
+                            "Rangpur Sadar",
+                            "Badarganj",
+                            "Gangachara",
+                            "Kaunia",
+                            "Mithapukur",
+                            "Pirgacha",
+                            "Pirganj",
+                            "Taraganj"
+                        ]
+                    },
+                    {
+                        "name": "Dinajpur",
+                        "sub_cities": [
+                            "Dinajpur Sadar",
+                            "Birampur",
+                            "Birganj",
+                            "Bochaganj",
+                            "Chirirbandar",
+                            "Fulbari",
+                            "Ghoraghat",
+                            "Hakimpur",
+                            "Kaharole",
+                            "Khansama",
+                            "Nawabganj",
+                            "Parbatipur"
+                        ]
+                    },
+                    {
+                        "name": "Gaibandha",
+                        "sub_cities": [
+                            "Gaibandha Sadar",
+                            "Fulchhari",
+                            "Gobindaganj",
+                            "Palashbari",
+                            "Sadullapur",
+                            "Saghata",
+                            "Sundarganj"
+                        ]
+                    },
+                    {
+                        "name": "Kurigram",
+                        "sub_cities": [
+                            "Kurigram Sadar",
+                            "Bhurungamari",
+                            "Char Rajibpur",
+                            "Chilmari",
+                            "Fulbari",
+                            "Nageshwari",
+                            "Phulbari",
+                            "Rajarhat",
+                            "Ulipur"
+                        ]
+                    },
+                    {
+                        "name": "Lalmonirhat",
+                        "sub_cities": [
+                            "Lalmonirhat Sadar",
+                            "Aditmari",
+                            "Hatibandha",
+                            "Kaliganj",
+                            "Patgram"
+                        ]
+                    },
+                    {
+                        "name": "Nilphamari",
+                        "sub_cities": [
+                            "Nilphamari Sadar",
+                            "Dimla",
+                            "Domar",
+                            "Jaldhaka",
+                            "Kishoreganj",
+                            "Saidpur"
+                        ]
+                    },
+                    {
+                        "name": "Panchagarh",
+                        "sub_cities": [
+                            "Panchagarh Sadar",
+                            "Atwari",
+                            "Boda",
+                            "Debiganj",
+                            "Tetulia"
+                        ]
+                    },
+                    {
+                        "name": "Thakurgaon",
+                        "sub_cities": [
+                            "Thakurgaon Sadar",
+                            "Baliadangi",
+                            "Haripur",
+                            "Pirganj",
+                            "Ranisankail"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Mymensingh",
+                "districts": [
+                    {
+                        "name": "Mymensingh",
+                        "sub_cities": [
+                            "Mymensingh Sadar",
+                            "Bhaluka",
+                            "Dhobaura",
+                            "Fulbaria",
+                            "Gaffargaon",
+                            "Gauripur",
+                            "Haluaghat",
+                            "Ishwarganj",
+                            "Muktagachha",
+                            "Nandail",
+                            "Phulpur",
+                            "Tarakanda"
+                        ]
+                    },
+                    {
+                        "name": "Netrokona",
+                        "sub_cities": [
+                            "Netrokona Sadar",
+                            "Atpara",
+                            "Barhatta",
+                            "Durgapur",
+                            "Khaliajuri",
+                            "Kalmakanda",
+                            "Kendua",
+                            "Madan",
+                            "Mohanganj",
+                            "Purbadhala"
+                        ]
+                    },
+                    {
+                        "name": "Jamalpur",
+                        "sub_cities": [
+                            "Jamalpur Sadar",
+                            "Bakshiganj",
+                            "Dewanganj",
+                            "Islampur",
+                            "Madarganj",
+                            "Melandaha",
+                            "Sarishabari"
+                        ]
+                    },
+                    {
+                        "name": "Sherpur",
+                        "sub_cities": [
+                            "Sherpur Sadar",
+                            "Jhenaigati",
+                            "Nakla",
+                            "Nalitabari",
+                            "Sreebardi"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

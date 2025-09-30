@@ -24,12 +24,6 @@ class ProfileController extends Controller {
                 'required',
                 'email',
                 Rule::unique('users')->ignore($user->id),
-            ],
-            'mobile' => [
-                'required',
-                'string',
-                'max:20',
-                Rule::unique('users')->ignore($user->id),
             ]
         ];
 
@@ -39,7 +33,6 @@ class ProfileController extends Controller {
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'mobile' => $request->mobile,
         ]);
 
         return redirect()->route('backend.profile')

@@ -1,459 +1,1053 @@
 @extends('layouts.frontend')
 
 @section('content')
-    <!-- Hero Section - Full Screen -->
-    <header class="hero-fullscreen">
-        <div class="hero-background">
-            <div class="hero-particles"></div>
-            <div class="hero-gradient"></div>
-        </div>
-        <div class="hero-content">
-            <div class="container">
-                <div class="hero-text-wrapper">
-                    <span class="pill animate-fade-in-up" data-delay="0.2s">Based in Geneva, Switzerland</span>
-                    <div class="subtitle animate-fade-in-up" data-delay="0.4s">Professional Website Creation</div>
-                    <h1 class="animate-fade-in-up" data-delay="0.6s">Crafting Digital Excellence for Swiss Businesses</h1>
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <p class="hero-description animate-fade-in-up" data-delay="0.8s">
-                                We specialize in creating modern, high-performance websites that elevate your brand.
-                                From elegant showcase sites to powerful e-commerce platforms, we deliver digital solutions
-                                that drive results and exceed expectations.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="hero-buttons animate-fade-in-up" data-delay="1s">
-                        <a class="btn-custom btn-primary" href="#realisations">
-                            <i class="fas fa-eye"></i>
-                            View Our Work
-                        </a>
-                        <a class="btn-custom btn-outline" href="#services">
-                            <i class="fas fa-cogs"></i>
-                            Explore Services
-                        </a>
-                    </div>
-
-                    <!-- Scroll Indicator -->
-                    <div class="scroll-indicator animate-fade-in-up" data-delay="1.2s">
-                        <div class="scroll-arrow"></div>
-                        <span>Scroll to explore</span>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 reveal reveal-left">
+                    <h1 class="hero-title">Shop from Australian stores and ship to Bangladesh</h1>
+                    <p class="hero-subtitle">Just send us a link, we'll take care of the rest. Get your favorite Australian products delivered right to your doorstep in Bangladesh.</p>
+                    <a href="#order-form" class="btn btn-accent btn-lg me-3">
+                        <i class="fa-solid fa-rocket-launch"></i>
+                        Submit Order Request
+                    </a>
+                    <a href="#how-it-works" class="btn btn-outline-dark btn-lg">
+                        Learn More
+                    </a>
+                </div>
+                <div class="col-lg-6 reveal reveal-right">
+                    <div class="text-center">
+                        <img src="{{ asset('assets/images/shipping-vector.png') }}" alt="Shopping illustration" class="img-fluid float-slow">
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Floating Feature Cards -->
-        <div class="hero-features">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="feature-card animate-fade-in-up" data-delay="1.2s">
-                            <div class="feature-icon">
-                                <i class="fas fa-palette"></i>
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-5">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4 reveal">
+                    <div class="process-step">
+                        <div class="process-number">1</div>
+                        <div class="process-arrow d-none d-lg-block">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <h4>Submit a Link</h4>
+                        <p class="text-muted">Provide the product link from any Australian online store along with quantity and shipping details.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 reveal" style="transition-delay: 120ms">
+                    <div class="process-step">
+                        <div class="process-number">2</div>
+                        <div class="process-arrow d-none d-lg-block">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <h4>Get a Quote</h4>
+                        <p class="text-muted">Receive a quote with total cost including product price, shipping to Bangladesh, and our service fee.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 reveal" style="transition-delay: 240ms">
+                    <div class="process-step">
+                        <div class="process-number">3</div>
+                        <h4>We Ship It</h4>
+                        <p class="text-muted">Place your order, make payment, and we'll purchase and ship the product directly to your address in Bangladesh.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form -->
+    <section id="order-form" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-10 col-lg-11">
+                    <div class="order-form reveal reveal-up">
+                        <h3 class="mb-4 text-center">Submit Product Request</h3>
+                        <p class="text-muted text-center mb-4">Enter the product link and details below to get started.</p>
+
+                        <!-- Order Success Alert (UI only; to be made dynamic later) -->
+                        <div id="orderSuccessAlert" class="alert bg-white shadow-sm rounded-3 border-0 p-0 mb-4 reveal reveal-up" role="alert">
+                            <div class="p-3 p-md-4">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div class="d-flex align-items-start">
+                                        <span class="badge bg-success-subtle text-success rounded-circle p-3 me-3 flex-shrink-0">
+                                            <i class="fa-regular fa-circle-check"></i>
+                                        </span>
+                                        <div>
+                                            <h5 class="mb-1">Order request submitted</h5>
+                                            <p class="text-muted mb-2">We received your request. Our team will review and send a quote shortly.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row g-3 small">
+                                    <div class="col-md-12">
+                                        <div class="p-3 rounded border bg-light">
+                                            <div class="text-muted">Product URL</div>
+                                            <div class="fw-semibold text-break" id="successProductUrl"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="p-3 rounded border bg-light">
+                                            <div class="text-muted">Recipient</div>
+                                            <div class="fw-semibold" id="successRecipientName"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="p-3 rounded border bg-light">
+                                            <div class="text-muted">Quantity</div>
+                                            <div class="fw-semibold" id="successQuantity"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="p-3 rounded border bg-light">
+                                            <div class="text-muted">Tracking Number</div>
+                                            <div class="fw-semibold" id="successTrackingNumber"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <h3>Custom Design</h3>
-                            <p>Tailored interfaces that reflect your brand identity and deliver exceptional user experiences.</p>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="feature-card animate-fade-in-up" data-delay="1.4s">
-                            <div class="feature-icon">
-                                <i class="fas fa-rocket"></i>
+
+                        <div id="authForm" class="bg-white shadow-sm rounded-3 border-0 p-0 mb-4 reveal reveal-up">
+                            <div class="p-3 p-md-4">
+                                <p class="text-muted mb-3">Create an account or login to complete your order.</p>
+                                <ul class="nav nav-tabs auth-tabs" id="authModalTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="modal-login-tab" data-bs-toggle="tab" data-bs-target="#modal-login-pane" type="button" role="tab" aria-controls="modal-login-pane" aria-selected="true">Login</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="modal-register-tab" data-bs-toggle="tab" data-bs-target="#modal-register-pane" type="button" role="tab" aria-controls="modal-register-pane" aria-selected="false">Register</button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content p-3 auth-tabs-pane" id="authModalTabContent">
+                                    <div class="tab-pane fade show active" id="modal-login-pane" role="tabpanel" aria-labelledby="modal-login-tab" tabindex="0">
+                                        <form id="loginForm" method="POST">
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="modalLoginEmail" class="form-label">Email</label>
+                                                    <input id="modalLoginEmail" type="email" name="email" class="form-control" autocomplete="email" required>
+                                                    <div class="text-danger error-text" id="loginEmail-error"></div>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="modalLoginPassword" class="form-label">Password</label>
+                                                    <input id="modalLoginPassword" type="password" name="password" class="form-control" autocomplete="current-password" required>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-accent w-100">
+                                                <span class="btn-text">Login</span>
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="modal-register-pane" role="tabpanel" aria-labelledby="modal-register-tab" tabindex="0">
+                                        <form id="registerForm" method="POST">
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="modalRegName" class="form-label">Name</label>
+                                                    <input id="modalRegName" type="text" name="name" class="form-control" autocomplete="name" required>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="modalRegEmail" class="form-label">Email</label>
+                                                    <input id="modalRegEmail" type="email" name="email" class="form-control" autocomplete="email" required>
+                                                    <div class="text-danger error-text" id="registerEmail-error"></div>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="modalRegPassword" class="form-label">Password</label>
+                                                    <input id="modalRegPassword" type="password" name="password" class="form-control" autocomplete="new-password" required>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-accent w-100">
+                                                <span class="btn-text">Create Account</span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                            <h3>Performance First</h3>
-                            <p>Lightning-fast websites optimized for speed, SEO, and Google Core Web Vitals compliance.</p>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="feature-card animate-fade-in-up" data-delay="1.6s">
-                            <div class="feature-icon">
-                                <i class="fas fa-mobile-alt"></i>
+
+                        <div id="pendingOrderAlert" class="alert alert-warning shadow-sm rounded-3 border-0 p-0 mb-4 reveal reveal-up">
+                            <div class="p-3 p-md-4">
+                                <p class="text-muted mb-0"><i class="fa-regular fa-circle-exclamation"></i> You have a pending order. Please complete your order so we can process it.</p>
                             </div>
-                            <h3>Responsive Excellence</h3>
-                            <p>Perfect adaptation across all devices ensuring seamless experiences everywhere.</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-    </header>
+                        <!-- Multistep Form -->
+                        <form id="orderForm">
+                            <!-- Step Indicators -->
+                            <div class="step-indicators mb-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="step-indicator active" data-step="1">
+                                            <div class="step-number">1</div>
+                                            <div class="step-title">Product Details</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="step-indicator" data-step="2">
+                                            <div class="step-number">2</div>
+                                            <div class="step-title">Recipient Details</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-    <!-- Services Section -->
-    <section class="container section services-section" id="services">
-        <div class="section-header animate-fade-in-up" data-delay="0.2s">
-            <h2>Our Comprehensive Services</h2>
-            <p class="intro">Professional website solutions tailored to your business needs</p>
-        </div>
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4">
-                <article class="service-card animate-fade-in-up" data-delay="0.3s">
-                    <div class="service-icon">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <h3>Showcase Websites</h3>
-                    <p>Professional corporate websites that present your business with elegance and sophistication.
-                        Custom design, optimized content, and fully responsive layouts.</p>
-                    <div class="service-features">
-                        <span>Custom Design</span>
-                        <span>SEO Optimized</span>
-                        <span>Responsive</span>
-                    </div>
-                </article>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <article class="service-card animate-fade-in-up" data-delay="0.4s">
-                    <div class="service-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <h3>E-commerce Solutions</h3>
-                    <p>Secure online stores with integrated payment systems, comprehensive product management,
-                        and intuitive shopping experiences that convert visitors into customers.</p>
-                    <div class="service-features">
-                        <span>Payment Integration</span>
-                        <span>Product Management</span>
-                        <span>Order Processing</span>
-                    </div>
-                </article>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <article class="service-card animate-fade-in-up" data-delay="0.5s">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Responsive Design</h3>
-                    <p>Websites that adapt perfectly to all screen sizes and devices. From desktop computers
-                        to mobile phones, we ensure optimal viewing experiences everywhere.</p>
-                    <div class="service-features">
-                        <span>Mobile First</span>
-                        <span>Cross-Platform</span>
-                        <span>Touch Optimized</span>
-                    </div>
-                </article>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <article class="service-card animate-fade-in-up" data-delay="0.6s">
-                    <div class="service-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3>SEO Optimization</h3>
-                    <p>Comprehensive search engine optimization to increase your online visibility and attract
-                        local customers. We implement proven strategies for better search rankings.</p>
-                    <div class="service-features">
-                        <span>Keyword Research</span>
-                        <span>Technical SEO</span>
-                        <span>Local SEO</span>
-                    </div>
-                </article>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <article class="service-card animate-fade-in-up" data-delay="0.7s">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Maintenance & Support</h3>
-                    <p>Ongoing technical support, regular updates, automatic backups, and security monitoring.
-                        Available in English and French for your convenience.</p>
-                    <div class="service-features">
-                        <span>24/7 Monitoring</span>
-                        <span>Security Updates</span>
-                        <span>Bilingual Support</span>
-                    </div>
-                </article>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <article class="service-card animate-fade-in-up" data-delay="0.8s">
-                    <div class="service-icon">
-                        <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    <h3>Performance Optimization</h3>
-                    <p>Ultra-fast and optimized websites that provide the best possible user experience.
-                        We focus on speed, accessibility, and modern web standards.</p>
-                    <div class="service-features">
-                        <span>Speed Optimization</span>
-                        <span>Core Web Vitals</span>
-                        <span>Accessibility</span>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
+                            <!-- Step 1: Product Details -->
+                            <div class="step-content" id="step1">
+                                <h5 class="mb-4">Add Product URLs and Quantities</h5>
 
-    <!-- Portfolio Section -->
-    <section class="container section portfolio-section" id="realisations">
-        <div class="section-header animate-fade-in-up" data-delay="0.2s">
-            <h2>Featured Projects</h2>
-            <p class="intro">Discover some of our recent work and success stories</p>
-        </div>
+                                <!-- Product URLs Container -->
+                                <div id="productUrlsContainer">
+                                    <div class="product-url-item mb-3">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <label class="form-label">Product URL <span class="text-danger">*</span></label>
+                                                <input type="url" name="product_urls[]" class="form-control product-url-input" placeholder="https://www.amazon.com.au/product-link" required>
+                                                <div class="text-danger error-text product-url-error"></div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="form-label">Quantity <span class="text-danger">*</span></label>
+                                                <input type="number" name="product_quantities[]" class="form-control quantity-input" value="1" min="1" required>
+                                                <div class="text-danger error-text quantity-error"></div>
+                                            </div>
+                                            <div class="col-md-1 d-flex align-items-end">
+                                                <button type="button" class="btn btn-outline-danger btn-sm remove-url-btn" style="display: none;">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-        <div class="row g-4">
-            <div class="col-lg-4">
-                <article class="portfolio-card animate-fade-in-up" data-delay="0.3s" onclick="window.open('https://restaurant-lacroixblanche.ch', '_blank')">
-                    <div class="portfolio-image">
-                        <div class="portfolio-icon">🍽️</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Restaurant La Croix Blanche</h3>
-                        <p>Elegant showcase website for a traditional Geneva restaurant featuring online menu display,
-                            reservation system, and authentic Swiss hospitality presentation.</p>
-                        <div class="portfolio-tech">
-                            <span>Responsive Design</span>
-                            <span>Booking System</span>
-                            <span>Menu Management</span>
-                        </div>
-                        <div class="portfolio-link">
-                            <a href="https://restaurant-lacroixblanche.ch" target="_blank" class="btn-custom btn-outline">
-                                <i class="fas fa-external-link-alt"></i>
-                                Visit Website
-                            </a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-lg-4">
-                <article class="portfolio-card animate-fade-in-up" data-delay="0.4s" onclick="window.open('https://avocat-martin.ch', '_blank')">
-                    <div class="portfolio-image">
-                        <div class="portfolio-icon">⚖️</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Martin Law Firm</h3>
-                        <p>Professional website for a prestigious law firm with comprehensive service presentation,
-                            secure contact forms, and trust-building design elements.</p>
-                        <div class="portfolio-tech">
-                            <span>Professional Design</span>
-                            <span>Secure Forms</span>
-                            <span>Trust Elements</span>
-                        </div>
-                        <div class="portfolio-link">
-                            <a href="https://avocat-martin.ch" target="_blank" class="btn-custom btn-outline">
-                                <i class="fas fa-external-link-alt"></i>
-                                Visit Website
-                            </a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-lg-4">
-                <article class="portfolio-card animate-fade-in-up" data-delay="0.5s" onclick="window.open('https://boutique-mode-geneva.ch', '_blank')">
-                    <div class="portfolio-image">
-                        <div class="portfolio-icon">👗</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Geneva Fashion Store</h3>
-                        <p>Complete e-commerce platform for a luxury fashion boutique featuring product catalog,
-                            shopping cart, secure payments, and inventory management.</p>
-                        <div class="portfolio-tech">
-                            <span>E-commerce</span>
-                            <span>Payment Gateway</span>
-                            <span>Inventory System</span>
-                        </div>
-                        <div class="portfolio-link">
-                            <a href="https://boutique-mode-geneva.ch" target="_blank" class="btn-custom btn-outline">
-                                <i class="fas fa-external-link-alt"></i>
-                                Visit Website
-                            </a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
+                                <!-- Add More URL Button -->
+                                <div class="text-center mb-4">
+                                    <button type="button" class="btn btn-outline" id="addMoreUrlBtn">
+                                        <i class="fa-solid fa-plus"></i> Add Another Product
+                                    </button>
+                                </div>
+                            </div>
 
-    <!-- Pricing Section -->
-    <section class="container section pricing-section" id="tarifs">
-        <div class="section-header animate-fade-in-up" data-delay="0.2s">
-            <h2>Transparent Pricing</h2>
-            <p class="intro">Professional website solutions with clear pricing and comprehensive features</p>
-        </div>
-        <div class="row g-4">
-            <div class="col-lg-4">
-                <div class="pricing-card animate-fade-in-up" data-delay="0.3s">
-                    <div class="pricing-header">
-                        <div class="pricing-badge">Starter</div>
-                        <h4>Essential Website</h4>
-                        <div class="pricing-amount">CHF 690</div>
-                        <div class="pricing-note">Perfect for startups and small businesses</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Custom responsive design (mobile-first)</li>
-                        <li><i class="fas fa-check"></i> Up to 5 pages with custom content</li>
-                        <li><i class="fas fa-check"></i> SEO optimization & meta tags</li>
-                        <li><i class="fas fa-check"></i> Professional contact forms with validation</li>
-                        <li><i class="fas fa-check"></i> Google Analytics & Search Console setup</li>
-                        <li><i class="fas fa-check"></i> Social media integration & sharing</li>
-                        <li><i class="fas fa-check"></i> SSL certificate & security measures</li>
-                        <li><i class="fas fa-check"></i> 2 months of maintenance & support</li>
-                        <li><i class="fas fa-check"></i> Performance optimization (Core Web Vitals)</li>
-                        <li><i class="fas fa-check"></i> Basic content management system</li>
-                    </ul>
-                    <div class="pricing-action">
-                        <a class="btn-custom btn-primary w-100" href="#contact">
-                            <i class="fas fa-rocket"></i>
-                            Get Started
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="pricing-card pricing-popular animate-fade-in-up" data-delay="0.4s">
-                    <div class="popular-badge">Most Popular</div>
-                    <div class="pricing-header">
-                        <div class="pricing-badge">Professional</div>
-                        <h4>Business Website</h4>
-                        <div class="pricing-amount">CHF 1,250</div>
-                        <div class="pricing-note">Complete digital presence solution</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Everything from Starter plan</li>
-                        <li><i class="fas fa-check"></i> Up to 10 pages + dynamic blog system</li>
-                        <li><i class="fas fa-check"></i> Advanced CMS with user management</li>
-                        <li><i class="fas fa-check"></i> Comprehensive SEO strategy & implementation</li>
-                        <li><i class="fas fa-check"></i> Advanced analytics & conversion tracking</li>
-                        <li><i class="fas fa-check"></i> Newsletter integration & email marketing</li>
-                        <li><i class="fas fa-check"></i> Multi-language support (EN/FR)</li>
-                        <li><i class="fas fa-check"></i> Advanced security features & backups</li>
-                        <li><i class="fas fa-check"></i> 6 months of maintenance & priority support</li>
-                        <li><i class="fas fa-check"></i> Performance monitoring & optimization</li>
-                    </ul>
-                    <div class="pricing-action">
-                        <a class="btn-custom btn-primary w-100" href="#contact">
-                            <i class="fas fa-star"></i>
-                            Choose Professional
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="pricing-card animate-fade-in-up" data-delay="0.5s">
-                    <div class="pricing-header">
-                        <div class="pricing-badge">Enterprise</div>
-                        <h4>E-commerce & Web Apps</h4>
-                        <div class="pricing-amount">Custom Quote</div>
-                        <div class="pricing-note">Scalable solutions for growing businesses</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Complete e-commerce platform setup</li>
-                        <li><i class="fas fa-check"></i> Advanced product catalog & inventory management</li>
-                        <li><i class="fas fa-check"></i> Multiple payment gateways (Stripe, PayPal, etc.)</li>
-                        <li><i class="fas fa-check"></i> Advanced shopping cart & checkout system</li>
-                        <li><i class="fas fa-check"></i> Order management & fulfillment tracking</li>
-                        <li><i class="fas fa-check"></i> Customer account management & profiles</li>
-                        <li><i class="fas fa-check"></i> Advanced admin dashboard & reporting</li>
-                        <li><i class="fas fa-check"></i> Custom integrations & third-party APIs</li>
-                        <li><i class="fas fa-check"></i> Advanced security & fraud protection</li>
-                        <li><i class="fas fa-check"></i> 12 months of maintenance & 24/7 support</li>
-                        <li><i class="fas fa-check"></i> Training sessions & documentation</li>
-                        <li><i class="fas fa-check"></i> Performance optimization</li>
-                    </ul>
-                    <div class="pricing-action">
-                        <a class="btn-custom btn-outline w-100" href="#contact">
-                            <i class="fas fa-comments"></i>
-                            Request Custom Quote
-                        </a>
+                            <!-- Step 2: Recipient Details -->
+                            <div class="step-content" id="step2" style="display: none;">
+                                <h5 class="mb-4">Recipient Information</h5>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label">Recipient Name <span class="text-danger">*</span></label>
+                                        <input type="text" name="recipient_name" class="form-control" id="name" required>
+                                        <div class="text-danger error-text" id="recipient_name-error"></div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone" class="form-label">Recipient Mobile Number <span class="text-danger">*</span></label>
+                                        <input type="tel" name="recipient_mobile" class="form-control" id="phone" placeholder="+880..." required>
+                                        <div class="text-danger error-text" id="recipient_mobile-error"></div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="district" class="form-label">District <span class="text-danger">*</span></label>
+                                        <select name="district" class="form-control select2" id="district" required>
+                                            <option value="">Select District</option>
+                                            @foreach ($districts as $district)
+                                                <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="text-danger error-text" id="district-error"></div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="area" class="form-label">Area <span class="text-danger">*</span></label>
+                                        <select name="area" class="form-control select2" id="sub_city" required>
+                                            <option value="">Select Area</option>
+                                        </select>
+                                        <div class="text-danger error-text" id="area-error"></div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Recipient Address <span class="text-danger">*</span></label>
+                                    <textarea name="recipient_address" class="form-control" id="address" rows="3" placeholder="Enter complete address including house number, road, area" required></textarea>
+                                    <div class="text-danger error-text" id="recipient_address-error"></div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="notes" class="form-label">Additional Notes (Optional)</label>
+                                    <textarea name="notes" class="form-control" id="notes" rows="2" placeholder="Any special instructions or requirements"></textarea>
+                                    <div class="text-danger error-text" id="notes-error"></div>
+                                </div>
+                            </div>
+
+                            <!-- Navigation Buttons -->
+                            <div class="step-navigation">
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" class="btn btn-outline-secondary" id="prevStepBtn" style="display: none;">
+                                        <i class="fa-solid fa-arrow-left"></i> Previous
+                                    </button>
+                                    <div class="ms-auto">
+                                        <button type="button" class="btn btn-accent" id="nextStepBtn">
+                                            Next <i class="fa-solid fa-arrow-right"></i>
+                                        </button>
+                                        <button type="submit" class="btn btn-accent btn-lg" id="submitBtn" style="display: none;">
+                                            <span class="btn-text">
+                                                <i class="fa-regular fa-paper-plane"></i>
+                                                Submit Order Request
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="container section contact-section" id="contact">
-        <div class="section-header animate-fade-in-up" data-delay="0.2s">
-            <h2>Ready to Transform Your Digital Presence?</h2>
-            <p class="intro">Let's discuss your project and get you a personalized quote within 24 hours</p>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <div class="contact-form animate-fade-in-up" data-delay="0.3s">
-                    <div class="input-group">
-                        <input type="email" class="form-control form-control-custom" placeholder="Enter your email address" />
-                        <button class="btn-custom btn-primary">
-                            <i class="fas fa-paper-plane"></i>
-                            Get Free Quote
-                        </button>
+    <!-- Features -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Why Choose BorderlessShopping?</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4 reveal">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fa-regular fa-shield-check"></i>
+                        </div>
+                        <h4>Secure & Reliable</h4>
+                        <p class="text-muted">Your orders are handled with complete security and reliability. We ensure safe delivery of your products.</p>
                     </div>
-                    <p class="contact-note">
-                        <i class="fas fa-clock"></i>
-                        Response guaranteed within 24 hours
-                    </p>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 reveal" style="transition-delay: 120ms">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fa-regular fa-truck-arrow-right"></i>
+                        </div>
+                        <h4>Fast Processing</h4>
+                        <p class="text-muted">Quick quote generation and order processing. Get your products delivered in the shortest possible time.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 reveal" style="transition-delay: 240ms">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fa-regular fa-headset"></i>
+                        </div>
+                        <h4>24/7 Support</h4>
+                        <p class="text-muted">Our customer support team is available round the clock to assist you with any queries or concerns.</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="contact-info animate-fade-in-up" data-delay="0.4s">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Geneva, Switzerland</p>
-                        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 reveal">
+                    <div class="stat-item">
+                        <span class="stat-number">2,500+</span>
+                        <div class="stat-label">Orders Delivered</div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>info@codenest.ch</p>
-                        </div>
+                <div class="col-lg-3 col-md-6 mb-4 reveal" style="transition-delay: 120ms">
+                    <div class="stat-item">
+                        <span class="stat-number">1,200+</span>
+                        <div class="stat-label">Happy Customers</div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+41 22 XXX XX XX</p>
+                <div class="col-lg-3 col-md-6 mb-4 reveal" style="transition-delay: 240ms">
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <div class="stat-label">Cities Covered</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 reveal" style="transition-delay: 360ms">
+                    <div class="stat-item">
+                        <span class="stat-number">99.5%</span>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Transparent Pricing</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="feature-card reveal reveal-up">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4>Service Fee: <span class="text-accent">Only 12%</span> + Shipping</h4>
+                                <p class="text-muted mb-2">We now charge just a 12% service fee on the product price plus actual shipping costs. Transparent pricing, no surprises.</p>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success me-2"></i>Product Price (as shown on store)</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>12% Service Fee</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Shipping Cost (Australia to Bangladesh)</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>No Hidden Charges</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="display-6 text-accent fw-bold">12%</div>
+                                <div class="text-muted">Service Fee</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="lead text-muted mb-4">Have questions? We're here to help you with your shopping needs.</p>
+                    <div class="row">
+                        <div class="col-md-6 mb-3 reveal">
+                            <div class="feature-card text-center">
+                                <i class="fas fa-envelope fa-2x text-accent mb-3"></i>
+                                <h5>Email</h5>
+                                <p class="text-muted">support@borderlessshopping.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3 reveal" style="transition-delay: 120ms">
+                            <div class="feature-card text-center">
+                                <i class="fas fa-phone fa-2x text-accent mb-3"></i>
+                                <h5>Phone</h5>
+                                <p class="text-muted">+880 1234-567890</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loader Overlay -->
+    <div id="loaderOverlay" class="loader-overlay">
+        <div class="loader-container">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Processing your request...</div>
+            <div class="loader-subtext">Please wait while we submit your order</div>
+        </div>
+    </div>
 @endsection
 
 @push('scripts')
     <script>
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        $(document).ready(function() {
+            var orderData = JSON.parse(localStorage.getItem('orderData'));
+            let isLoggedIn = {{ auth()->check() ? 'true' : 'false' }};
+            let currentStep = 1;
+            const totalSteps = 2;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const element = entry.target;
-                    const delay = element.dataset.delay || 0;
+            //get sub cities with loader
+            $('#district').change(function() {
+                let districtId = $(this).val();
+                let url = "{{ route('frontend.get-sub-cities') }}";
 
-                    setTimeout(() => {
-                        element.classList.add('animate-in');
-                    }, delay * 1000);
+                if (!districtId) {
+                    $('#sub_city').prop('disabled', false).html('<option value="">Select Area</option>').trigger('change');
+                    return;
+                }
 
-                    observer.unobserve(element);
+                // Show page loader and set select loading state
+                showLoader('Loading areas...', 'Fetching areas for selected district');
+                $('#sub_city').prop('disabled', true).html('<option value="" selected>Loading...</option>').trigger('change');
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        district_id: districtId
+                    },
+                    success: function(response) {
+                        $('#sub_city').prop('disabled', false).html(response.html).trigger('change');
+                    },
+                    error: function() {
+                        $('#sub_city').prop('disabled', false).html('<option value="">Could not load areas</option>').trigger('change');
+                    },
+                    complete: function() {
+                        hideLoader();
+                    }
+                });
+            });
+
+            // Loader helper functions
+            function showLoader(message = 'Processing your request...', subtext = 'Please wait while we submit your order') {
+                $('.loader-text').text(message);
+                $('.loader-subtext').text(subtext);
+                $('#loaderOverlay').addClass('show');
+            }
+
+            function hideLoader() {
+                $('#loaderOverlay').removeClass('show');
+            }
+
+            // Button loading state helper functions
+            function setButtonLoading(button, loading = true) {
+                if (loading) {
+                    button.addClass('btn-loading');
+                    button.append('<div class="btn-spinner"></div>');
+                } else {
+                    button.removeClass('btn-loading');
+                    button.find('.btn-spinner').remove();
+                }
+            }
+
+            // Multistep form functions
+            function showStep(step) {
+                $('.step-content').hide();
+                $(`#step${step}`).show();
+                currentStep = step;
+
+                // Update step indicators
+                $('.step-indicator').removeClass('active completed');
+                for (let i = 1; i <= step; i++) {
+                    if (i < step) {
+                        $(`.step-indicator[data-step="${i}"]`).addClass('completed');
+                    } else {
+                        $(`.step-indicator[data-step="${i}"]`).addClass('active');
+                    }
+                }
+
+                // Update navigation buttons
+                if (step === 1) {
+                    $('#prevStepBtn').hide();
+                    $('#nextStepBtn').show();
+                    $('#submitBtn').hide();
+                } else if (step === totalSteps) {
+                    $('#prevStepBtn').show();
+                    $('#nextStepBtn').hide();
+                    $('#submitBtn').show();
+                } else {
+                    $('#prevStepBtn').show();
+                    $('#nextStepBtn').show();
+                    $('#submitBtn').hide();
+                }
+            }
+
+            function validateStep1() {
+                let isValid = true;
+                $('.product-url-error, .quantity-error').text('');
+                $('.product-url-input, .quantity-input').removeClass('is-invalid is-valid');
+
+                $('.product-url-item').each(function(index) {
+                    let urlInput = $(this).find('.product-url-input');
+                    let quantityInput = $(this).find('.quantity-input');
+                    let url = urlInput.val().trim();
+                    let quantity = quantityInput.val();
+
+                    // Validate URL
+                    if (!url) {
+                        $(this).find('.product-url-error').text('Product URL is required');
+                        urlInput.addClass('is-invalid');
+                        isValid = false;
+                    } else if (!isValidUrl(url)) {
+                        $(this).find('.product-url-error').text('Please enter a valid URL');
+                        urlInput.addClass('is-invalid');
+                        isValid = false;
+                    } else {
+                        urlInput.addClass('is-valid');
+                    }
+
+                    // Validate Quantity
+                    if (!quantity || quantity < 1) {
+                        $(this).find('.quantity-error').text('Quantity must be at least 1');
+                        quantityInput.addClass('is-invalid');
+                        isValid = false;
+                    } else {
+                        quantityInput.addClass('is-valid');
+                    }
+                });
+
+                return isValid;
+            }
+
+            function validateStep2() {
+                let isValid = true;
+                $('.error-text').text('');
+                $('.form-control').removeClass('is-invalid is-valid');
+
+                // Validate Recipient Name
+                let recipientName = ($('#name').val() || '').trim();
+                if (!recipientName) {
+                    $('#recipient_name-error').text('Recipient name is required');
+                    $('#name').addClass('is-invalid');
+                    isValid = false;
+                } else if (recipientName.length < 2) {
+                    $('#recipient_name-error').text('Recipient name must be at least 2 characters');
+                    $('#name').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#name').addClass('is-valid');
+                }
+
+                // Validate Mobile Number
+                let mobile = ($('#phone').val() || '').trim();
+                if (!mobile) {
+                    $('#recipient_mobile-error').text('Mobile number is required');
+                    $('#phone').addClass('is-invalid');
+                    isValid = false;
+                } else if (!validateBangladeshiMobile(mobile)) {
+                    $('#recipient_mobile-error').text('Please enter a valid Bangladeshi mobile number (e.g., +8801********* or 01*********)');
+                    $('#phone').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#phone').addClass('is-valid');
+                }
+
+
+                // Validate Area
+                if ($('#area').length) {
+                    let area = ($('#area').val() || '').trim();
+                    if (!area) {
+                        $('#area-error').text('Area is required');
+                        $('#area').addClass('is-invalid');
+                        isValid = false;
+                    } else {
+                        $('#area').addClass('is-valid');
+                    }
+                }
+
+                // Validate District
+                let district = $('#district').val();
+                if (!district) {
+                    $('#district-error').text('District is required');
+                    $('#district').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#district').addClass('is-valid');
+                }
+
+                // Validate Address
+                let address = ($('#address').val() || '').trim();
+                if (!address) {
+                    $('#recipient_address-error').text('Recipient address is required');
+                    $('#address').addClass('is-invalid');
+                    isValid = false;
+                } else if (address.length < 10) {
+                    $('#recipient_address-error').text('Please provide a complete address (at least 10 characters)');
+                    $('#address').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#address').addClass('is-valid');
+                }
+
+                return isValid;
+            }
+
+            // Add more URL functionality
+            $('#addMoreUrlBtn').click(function() {
+                let newUrlItem = `
+                    <div class="product-url-item mb-3">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label class="form-label">Product URL <span class="text-danger">*</span></label>
+                                <input type="url" name="product_urls[]" class="form-control product-url-input" placeholder="https://www.amazon.com.au/product-link" required>
+                                <div class="text-danger error-text product-url-error"></div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Quantity <span class="text-danger">*</span></label>
+                                <input type="number" name="product_quantities[]" class="form-control quantity-input" value="1" min="1" required>
+                                <div class="text-danger error-text quantity-error"></div>
+                            </div>
+                            <div class="col-md-1 d-flex align-items-end">
+                                <button type="button" class="btn btn-outline-danger btn-sm remove-url-btn">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $('#productUrlsContainer').append(newUrlItem);
+
+                // Show remove buttons if more than one item
+                if ($('.product-url-item').length > 1) {
+                    $('.remove-url-btn').show();
                 }
             });
-        }, observerOptions);
 
-        // Observe all animated elements
-        document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('[data-delay]');
-            animatedElements.forEach(el => observer.observe(el));
-        });
+            // Remove URL functionality
+            $(document).on('click', '.remove-url-btn', function() {
+                $(this).closest('.product-url-item').remove();
 
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                // Hide remove buttons if only one item left
+                if ($('.product-url-item').length <= 1) {
+                    $('.remove-url-btn').hide();
+                }
+            });
+
+            // Step navigation
+            $('#nextStepBtn').click(function() {
+                if (currentStep === 1 && validateStep1()) {
+                    showStep(2);
+                }
+            });
+
+            $('#prevStepBtn').click(function() {
+                if (currentStep > 1) {
+                    showStep(currentStep - 1);
+                }
+            });
+
+            // Bangladeshi mobile number validation function
+            function validateBangladeshiMobile(mobile) {
+                // Remove all spaces and special characters except + and digits
+                let cleanMobile = mobile.replace(/[^\d+]/g, '');
+
+                // Check for valid Bangladeshi mobile number patterns
+                // Pattern 1: +8801********* (11 digits after +880)
+                // Pattern 2: 01********* (11 digits starting with 01)
+                let pattern1 = /^\+8801[0-9]{9}$/; // +880 followed by 1 and 9 more digits
+                let pattern2 = /^01[0-9]{9}$/; // 01 followed by 9 more digits
+
+                return pattern1.test(cleanMobile) || pattern2.test(cleanMobile);
+            }
+
+            // Mobile number input handler - restricts to numeric and + sign, validates, and auto-formats
+            $('#phone').on('input', function() {
+                let value = $(this).val();
+                // Remove any character that is not a digit or +
+                let cleanValue = value.replace(/[^\d+]/g, '');
+
+                // Update the input value with cleaned value
+                if (value !== cleanValue) {
+                    $(this).val(cleanValue);
+                }
+
+                // Auto-format: if user starts typing without +880, add it
+                if (cleanValue.length > 0 && !cleanValue.startsWith('+880') && !cleanValue.startsWith('01')) {
+                    if (cleanValue.startsWith('1') && cleanValue.length <= 10) {
+                        $(this).val('+880' + cleanValue);
+                        cleanValue = '+880' + cleanValue;
+                    } else if (cleanValue.length <= 11 && !cleanValue.startsWith('+')) {
+                        $(this).val(cleanValue);
+                    }
+                }
+
+                let mobile = cleanValue;
+                let errorDiv = $('#recipient_mobile-error');
+
+                if (mobile.length > 0) {
+                    if (validateBangladeshiMobile(mobile)) {
+                        $(this).removeClass('is-invalid').addClass('is-valid');
+                        errorDiv.text('');
+                    } else {
+                        $(this).removeClass('is-valid').addClass('is-invalid');
+                        errorDiv.text('Please enter a valid Bangladeshi mobile number (e.g., +8801********* or 01*********)');
+                    }
+                } else {
+                    $(this).removeClass('is-valid is-invalid');
+                    errorDiv.text('');
+                }
+            });
+
+
+            // Real-time validation for other fields
+            $('#productUrl').on('blur', function() {
+                let url = $(this).val().trim();
+                if (url && !isValidUrl(url)) {
+                    $(this).addClass('is-invalid');
+                    $('#product_url-error').text('Please enter a valid URL');
+                } else if (url) {
+                    $(this).removeClass('is-invalid').addClass('is-valid');
+                    $('#product_url-error').text('');
+                }
+            });
+
+
+            // Helper functions
+            function isValidUrl(string) {
+                try {
+                    new URL(string);
+                    return true;
+                } catch (_) {
+                    return false;
+                }
+            }
+
+            function isValidEmail(email) {
+                let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function showSuccessAlert(response) {
+                localStorage.removeItem('orderData');
+                // Redirect to thank you page with tracking number
+                window.location.href = "{{ route('frontend.thank-you', '') }}/" + response.order_request.tracking_number;
+            }
+
+            // Initialize form
+            showStep(1);
+
+            if (orderData) {
+                // Load order data if available
+                if (orderData.product_urls && orderData.product_urls.length > 0) {
+
+                    // Add URL items from stored data
+                    orderData.product_urls.forEach((url, index) => {
+                        if (index === 0) {
+                            // First item already exists, just update it
+                            $('.product-url-input').first().val(url);
+                            $('.quantity-input').first().val(orderData.product_quantities[index] || 1);
+                        } else {
+                            // Add new items
+                            let newUrlItem = `
+                                <div class="product-url-item mb-3">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <label class="form-label">Product URL <span class="text-danger">*</span></label>
+                                            <input type="url" name="product_urls[]" class="form-control product-url-input" placeholder="https://www.amazon.com.au/product-link" value="${url}" required>
+                                            <div class="text-danger error-text product-url-error"></div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label class="form-label">Quantity <span class="text-danger">*</span></label>
+                                            <input type="number" name="product_quantities[]" class="form-control quantity-input" value="${orderData.product_quantities[index] || 1}" min="1" required>
+                                            <div class="text-danger error-text quantity-error"></div>
+                                        </div>
+                                        <div class="col-md-1 d-flex align-items-end">
+                                            <button type="button" class="btn btn-outline-danger btn-sm remove-url-btn">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                            $('#productUrlsContainer').append(newUrlItem);
+                        }
                     });
+
+                    // Show remove buttons if more than one item
+                    if ($('.product-url-item').length > 1) {
+                        $('.remove-url-btn').show();
+                    }
+                }
+
+                $('#name').val(orderData.recipient_name || '');
+                $('#phone').val(orderData.recipient_mobile || '');
+                $('#area').val(orderData.area || '');
+                $('#district').val(orderData.district || '');
+                $('#district').trigger('change');
+                $('#address').val(orderData.recipient_address || '');
+                $('#notes').val(orderData.notes || '');
+                $.ajax({
+                    url: "{{ route('frontend.get-sub-cities') }}",
+                    type: 'GET',
+                    data: {
+                        district_id: orderData.district
+                    },
+                    success: function(response) {
+                        $('#sub_city').html(response.html);
+                        $('#sub_city').val(orderData.area || '');
+                        $('#sub_city').trigger('change');
+                    }
+                });
+                $('#pendingOrderAlert').show();
+            } else {
+                $('#pendingOrderAlert').hide();
+            }
+
+            //login form submission
+            $('#loginForm').submit(function(e) {
+                e.preventDefault();
+                $('.error-text').text('');
+                var orderData = JSON.parse(localStorage.getItem('orderData'));
+                let submitButton = $(this).find('button[type="submit"]');
+                setButtonLoading(submitButton, true);
+                showLoader('Logging you in...', 'Please wait while we authenticate your account');
+
+                let formData = new FormData(this);
+                // append arrays
+                (orderData.product_urls || []).forEach((u) => formData.append('product_urls[]', u));
+                (orderData.product_quantities || []).forEach((q) => formData.append('product_quantities[]', q));
+                formData.append('recipient_name', orderData.recipient_name);
+                formData.append('recipient_mobile', orderData.recipient_mobile);
+                formData.append('recipient_address', orderData.recipient_address);
+                formData.append('notes', orderData.notes);
+                formData.append('district', orderData.district);
+                formData.append('area', orderData.area);
+                formData.append('is_logged_in', false);
+                formData.append('action', 'login');
+                let url = "{{ route('frontend.order-request') }}";
+                $.get("{{ route('frontend.get-csrf-token') }}", function(response) {
+                    formData.append('_token', response.csrf_token);
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            hideLoader();
+                            setButtonLoading(submitButton, false);
+                            showSuccessAlert(response);
+                        },
+                        error: function(xhr, status, error) {
+                            hideLoader();
+                            setButtonLoading(submitButton, false);
+                            if (xhr.status === 401) {
+                                $('#loginEmail-error').text(xhr.responseJSON.error);
+                            } else {
+                                console.log(xhr.responseText);
+                            }
+                        }
+                    });
+                });
+            });
+
+            //register form submission
+            $('#registerForm').submit(function(e) {
+                e.preventDefault();
+                $('.error-text').text('');
+                var orderData = JSON.parse(localStorage.getItem('orderData'));
+                let submitButton = $(this).find('button[type="submit"]');
+                setButtonLoading(submitButton, true);
+                showLoader('Creating your account...', 'Please wait while we set up your account and process your order');
+
+                let formData = new FormData(this);
+                // append arrays
+                (orderData.product_urls || []).forEach((u) => formData.append('product_urls[]', u));
+                (orderData.product_quantities || []).forEach((q) => formData.append('product_quantities[]', q));
+                formData.append('recipient_name', orderData.recipient_name);
+                formData.append('recipient_mobile', orderData.recipient_mobile);
+                formData.append('recipient_address', orderData.recipient_address);
+                formData.append('notes', orderData.notes);
+                formData.append('district', orderData.district);
+                formData.append('area', orderData.area);
+                formData.append('is_logged_in', false);
+                formData.append('action', 'register');
+                let url = "{{ route('frontend.order-request') }}";
+                $.get("{{ route('frontend.get-csrf-token') }}", function(response) {
+                    formData.append('_token', response.csrf_token);
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            hideLoader();
+                            setButtonLoading(submitButton, false);
+                            showSuccessAlert(response);
+                        },
+                        error: function(xhr, status, error) {
+                            hideLoader();
+                            setButtonLoading(submitButton, false);
+                            if (xhr.status === 422) {
+                                let error = xhr.responseJSON.error;
+                                $('#registerEmail-error').text(error);
+                            } else {
+                                console.log(xhr.responseText);
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Form submission
+            $('#orderForm').submit(function(e) {
+                e.preventDefault();
+
+                // Validate current step before submission
+                if (currentStep === 1 && !validateStep1()) {
+                    return;
+                }
+                if (currentStep === 2 && !validateStep2()) {
+                    return;
+                }
+
+                // If not on final step, go to next step
+                if (currentStep < totalSteps) {
+                    showStep(currentStep + 1);
+                    return;
+                }
+
+                // Final submission
+                let formData = new FormData(this);
+                // Serialize FormData to object with array support for keys ending with []
+                let data = {};
+                formData.forEach((value, key) => {
+                    if (key.endsWith('[]')) {
+                        let baseKey = key.slice(0, -2);
+                        if (!Array.isArray(data[baseKey])) {
+                            data[baseKey] = [];
+                        }
+                        data[baseKey].push(value);
+                    } else {
+                        if (data[key] === undefined) {
+                            data[key] = value;
+                        } else {
+                            // Convert to array if multiple values under same key
+                            if (!Array.isArray(data[key])) {
+                                data[key] = [data[key]];
+                            }
+                            data[key].push(value);
+                        }
+                    }
+                });
+
+                $('.form-control').removeClass('is-valid is-invalid');
+                $('.error-text').text('');
+
+                if (isLoggedIn) {
+                    let submitButton = $(this).find('button[type="submit"]');
+                    setButtonLoading(submitButton, true);
+                    showLoader('Submitting your order...', 'Please wait while we process your order request');
+                    formData.append('is_logged_in', isLoggedIn);
+                    let url = "{{ route('frontend.order-request') }}";
+                    $.get("{{ route('frontend.get-csrf-token') }}", function(response) {
+                        formData.append('_token', response.csrf_token);
+                        $.ajax({
+                            url: url,
+                            type: 'POST',
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function(response) {
+                                hideLoader();
+                                setButtonLoading(submitButton, false);
+                                showSuccessAlert(response);
+                            },
+                            error: function(xhr, status, error) {
+                                hideLoader();
+                                setButtonLoading(submitButton, false);
+                                if (xhr.status === 422) {
+                                    let errors = xhr.responseJSON.errors;
+                                    $('.error-text').text('');
+                                    $.each(errors, function(field, messages) {
+                                        $(`#${field}-error`).text(messages[0]);
+                                        $(`#${field}`).addClass('is-invalid');
+                                    });
+                                } else {
+                                    console.log("Something went wrong:", xhr.responseText);
+                                }
+                            }
+                        });
+                    });
+                } else {
+                    localStorage.setItem('orderData', JSON.stringify(data));
+                    $('#authForm').show();
+                    $('#orderForm').hide();
+                    $('#pendingOrderAlert').hide();
+                    $('html, body').animate({
+                        scrollTop: $('#authForm').offset().top - 100
+                    }, 500);
                 }
             });
+
+            // Hide alert initially
+            $('#orderSuccessAlert').hide();
+            $('#authForm').hide();
         });
     </script>
 @endpush

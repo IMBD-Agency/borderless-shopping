@@ -12,9 +12,10 @@ class UserSeeder extends Seeder {
      * Run the database seeds.
      */
     public function run(): void {
+        // Super Admin
         User::create([
             'name' => 'RH Rony',
-            'mobile' => '01839096877',
+            'image' => 'blank-profile.jpg',
             'email' => 'rhrony0009@gmail.com',
             'password' => Hash::make('12345678'),
             'role' => 'super_admin',

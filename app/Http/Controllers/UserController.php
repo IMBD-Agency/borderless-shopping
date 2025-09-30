@@ -33,8 +33,7 @@ class UserController extends Controller {
         $rules = [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
-            'mobile' => 'required|string|max:20|unique:users',
-            'role' => 'required|in:admin,client',
+            'role' => 'required|in:admin,student',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required',
         ];
@@ -45,7 +44,6 @@ class UserController extends Controller {
         $userData = [
             'name' => $request->name,
             'email' => $request->email,
-            'mobile' => $request->mobile,
             'role' => $request->role,
             'password' => Hash::make($request->password)
         ];
@@ -93,13 +91,7 @@ class UserController extends Controller {
                 'email',
                 Rule::unique('users')->ignore($user->id),
             ],
-            'mobile' => [
-                'required',
-                'string',
-                'max:20',
-                Rule::unique('users')->ignore($user->id),
-            ],
-            'role' => 'required|in:super_admin,admin,client',
+            'role' => 'required|in:super_admin,admin,student',
             'status' => 'required|in:active,inactive',
         ];
 
@@ -109,7 +101,6 @@ class UserController extends Controller {
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'mobile' => $request->mobile,
             'role' => $request->role,
             'status' => $request->status,
         ]);
@@ -125,17 +116,13 @@ class UserController extends Controller {
             abort(403, 'Unauthorized action.');
         }
 
-        // Validation rules
         $request->validate([
-            'new_password' => 'required|string|min:8|confirmed',
-            'new_password_confirmation' => 'required',
-        ], [
-            'new_password.confirmed' => 'The password confirmation does not match.',
+            'password' => 'required|string|min:8|confirmed',
+            'password_confirmation' => 'required',
         ]);
 
-        // Update password
         $user->update([
-            'password' => Hash::make($request->new_password),
+            'password' => Hash::make($request->password)
         ]);
 
         return redirect()->route('backend.users.edit', $user->id)
@@ -145,43 +132,33 @@ class UserController extends Controller {
     public function updateProfilePicture(Request $request, $id) {
         $user = User::findOrFail($id);
 
-        // Validation rules
+        if ($user->role == 'super_admin' && !isSuperAdmin()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $request->validate([
-            'profile_picture' => 'required|image|mimes:jpg,jpeg,png',
-        ], [
-            'profile_picture.required' => 'Please select a profile picture.',
-            'profile_picture.image' => 'The file must be an image.',
-            'profile_picture.mimes' => 'The image must be a file of type: jpg, jpeg, png.',
-            'profile_picture.max' => 'The image may not be greater than 2MB.',
+            'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        // Handle file upload
         if ($request->hasFile('profile_picture')) {
             $file = $request->file('profile_picture');
 
-            // Delete old image if it exists and is not the default
-            if ($user->image && $user->image != 'blank-profile.jpg') {
-                $oldImagePath = public_path('assets/images/users/' . $user->image);
-                if (file_exists($oldImagePath)) {
-                    unlink($oldImagePath);
-                }
-            }
-
             // Generate unique filename
-            $filename = time() . '_' . $user->id . '.' . $file->getClientOriginalExtension();
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
 
             // Resize image
             $image = Image::read($file)->cover(300, 300)->save(public_path('assets/images/users/' . $filename));
 
-            // Update user record
-            $user->update(['image' => $filename]);
+            // Delete old image if exists
+            if ($user->image && file_exists(public_path('assets/images/users/' . $user->image))) {
+                unlink(public_path('assets/images/users/' . $user->image));
+            }
 
-            return redirect()->route('backend.users.edit', $user->id)
-                ->with('success', 'Profile picture updated successfully');
+            $user->update(['image' => $filename]);
         }
 
         return redirect()->route('backend.users.edit', $user->id)
-            ->with('error', 'Failed to upload profile picture');
+            ->with('success', 'Profile picture updated successfully');
     }
 
     public function destroy($id) {
@@ -191,18 +168,14 @@ class UserController extends Controller {
             abort(403, 'Unauthorized action.');
         }
 
-        // Don't allow deletion of the current user
-        if ($user->id === auth()->id()) {
+        if ($user->id == auth()->user()->id) {
             return redirect()->route('backend.users.index')
                 ->with('error', 'You cannot delete your own account');
         }
 
-        // Delete profile image if it exists and is not the default
-        if ($user->image && $user->image != 'blank-profile.jpg') {
-            $imagePath = public_path('assets/images/users/' . $user->image);
-            if (file_exists($imagePath)) {
-                unlink($imagePath);
-            }
+        // Delete profile picture if exists
+        if ($user->image && file_exists(public_path('assets/images/users/' . $user->image))) {
+            unlink(public_path('assets/images/users/' . $user->image));
         }
 
         $user->delete();

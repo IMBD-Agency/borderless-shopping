@@ -42,14 +42,6 @@
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="mobile" class="form-label">Mobile</label>
-                                <input type="text" class="form-control @error('mobile') is-invalid @enderror" id="mobile" name="mobile" value="{{ old('mobile', $user->mobile) }}" required>
-                                @error('mobile')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-6 mb-3">
                                 <label for="role" class="form-label">Role</label>
                                 <input type="text" class="form-control" value="{{ get_user_role($user->role) }}" readonly>
                                 <small class="text-muted">Role cannot be changed from profile page</small>
@@ -148,9 +140,7 @@
                         <h4 class="user-name fw-bold mb-2">{{ $user->name }}</h4>
                         <p class="user-role text-muted">{{ get_user_role($user->role) }}</p>
                         <div class="user-details text-start mt-3">
-                            <p class="mb-1"><strong>Mobile No:</strong> {{ $user->mobile }}</p>
                             <p class="mb-1"><strong>Email:</strong> {{ $user->email }}</p>
-
                         </div>
                     </div>
 
@@ -280,7 +270,6 @@
         }
 
         .card {
-            border: none;
             box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
             border-radius: 0.5rem;
         }

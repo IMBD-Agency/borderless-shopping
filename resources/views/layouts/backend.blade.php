@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="fr">
 
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{{ config('app.name') }} - Admin Panel</title>
-        <link rel="icon" href="{{ asset('assets/images/logos/code-nest-icon-round-48.png') }}">
+        <link rel="icon" href="{{ asset('assets/images/logos/borderless-logo-icon.png') }}">
 
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +35,7 @@
                 <!-- Logo Section -->
                 <div class="col-auto admin-logo">
                     <div class="logo-content d-flex align-items-center justify-content-center h-100">
-                        <img src="{{ asset('assets/images/logos/code-nest-icon-round-48.png') }}" alt="{{ config('app.name') }}" class="logo-image me-2">
+                        <img src="{{ asset('assets/images/logos/borderless-logo-icon.png') }}" alt="{{ config('app.name') }}" class="logo-image me-2">
                         <h1 class="logo-text mb-0">{{ config('app.name') }}</h1>
                     </div>
                 </div>
@@ -63,6 +63,9 @@
         <!-- Overlay for mobile -->
         <div class="admin-overlay"></div>
 
+        <!-- modals -->
+        @include('backend.partials.modals')
+
         <!-- jquery -->
         <script src="{{ asset('vendor/jquery-3.7.1/jquery-3.7.1.min.js') }}"></script>
         <!-- Bootstrap 5 JS -->
@@ -77,6 +80,25 @@
         <script src="{{ asset('assets/backend/script.js') }}?v={{ time() }}"></script>
 
         <script>
+            const MODAL_MD = $('#modal-md');
+            const MODAL_LG = $('#modal-lg');
+            const MODAL_XL = $('#modal-xl');
+            const MODAL_MD_CONTENT = $('#modal-md .modal-content');
+            const MODAL_LG_CONTENT = $('#modal-lg .modal-content');
+            const MODAL_XL_CONTENT = $('#modal-xl .modal-content');
+
+            function modalLoading(modal) {
+                modal.modal('show');
+                modal.find('.modal-header').html('<h1 class="modal-title fs-5">Loading...</h1>');
+                const MODAL_LOADING_CONTENT = `<div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="text-muted">Please wait while we process your request...</p>
+                </div>`;
+                modal.find('.modal-body').html(MODAL_LOADING_CONTENT);
+            }
+
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',

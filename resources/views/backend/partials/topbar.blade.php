@@ -3,13 +3,13 @@
         <!-- Left: Sidebar Toggle Button -->
         <div class="d-flex align-items-center">
             <button class="btn btn-link sidebar-toggle-btn me-3" id="sidebarToggle" type="button">
-                <i class="fas fa-bars"></i>
+                <i class="fa-solid fa-bars"></i>
             </button>
         </div>
 
         <!-- Center: Mobile Logo (hidden by default, shown on mobile) -->
         <div class="mobile-logo d-none">
-            <img src="{{ asset('assets/images/logos/logo-light.svg') }}" alt="{{ config('app.name') }}" class="logo-image">
+            <img src="{{ asset('assets/images/logos/borderless-logo.png') }}" alt="{{ config('app.name') }}" class="logo-image">
         </div>
 
         <!-- Right: User Menu -->
@@ -24,6 +24,7 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item" href="{{ route('backend.profile') }}"><i class="fas fa-user me-2"></i>Profile</a></li>
+                    <li><a class="dropdown-item" href="{{ route('frontend.index') }}"><i class="fas fa-globe me-2"></i>Frontend</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
