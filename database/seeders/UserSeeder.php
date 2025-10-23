@@ -20,5 +20,13 @@ class UserSeeder extends Seeder {
             'password' => Hash::make('12345678'),
             'role' => 'super_admin',
         ]);
+
+        User::create([
+            'name' => 'Syed Parvez',
+            'image' => 'blank-profile.jpg',
+            'email' => 'info@borderlessgroup.com.au',
+            'password' => Hash::make('12345678'),
+            'role' => 'admin',
+        ]);
     }
 }
