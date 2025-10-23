@@ -4,6 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name') }} – Shop from Australia, Ship to Bangladesh</title>
         <link rel="icon" href="{{ asset('assets/images/logos/borderless-logo-icon.png') }}">
         <meta name="description" content="Shop from Australia and ship to Bangladesh with ease. Modern, responsive experience.">

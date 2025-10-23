@@ -13,6 +13,10 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('order_request_id')->constrained('order_requests')->onDelete('cascade');
             $table->float('amount');
+            $table->string('payment_method')->default('stripe'); // stripe, cash, bank
+            $table->string('transaction_id')->nullable(); // Stripe payment intent ID
+            $table->string('payment_status')->default('pending'); // pending, completed, failed, cancelled
+            $table->json('metadata')->nullable(); // Additional payment data
             $table->timestamps();
         });
     }

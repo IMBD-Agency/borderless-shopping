@@ -113,7 +113,31 @@
                         @php $due = max(0, (float)($order->total_amount ?? 0) - (float)($order->total_paid_amount ?? 0)); @endphp
                         @if ($order->total_amount)
                             <div class="d-flex justify-content-between mb-1 mt-3"><span class="text-muted">Paid</span><span>{{ number_format($order->total_paid_amount ?? 0, 2) }} BDT</span></div>
-                            <div class="d-flex justify-content-between"><span class="text-muted">Due</span><span>{{ number_format($due, 2) }} BDT</span></div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-muted">Due</span>
+                                <span class="fw-bold {{ $due > 0 ? 'text-danger' : 'text-success' }}">{{ number_format($due, 2) }} BDT</span>
+                            </div>
+                            @if ($due > 0)
+                                <div class="text-center">
+                                    <button id="pay-now-btn" class="btn btn-success btn-lg w-100">
+                                        <i class="fa-solid fa-credit-card me-2"></i>
+                                        Pay Now {{ number_format($due, 2) }} BDT
+                                    </button>
+                                    <div class="mt-2">
+                                        <small class="text-muted">
+                                            <i class="fa-solid fa-shield-halved me-1"></i>
+                                            Secure payment powered by Stripe
+                                        </small>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="text-center">
+                                    <div class="alert alert-success mb-0">
+                                        <i class="fa-solid fa-check-circle me-2"></i>
+                                        Order fully paid
+                                    </div>
+                                </div>
+                            @endif
                         @endif
                     </div>
                 </div>
@@ -218,4 +242,52 @@
             }
         }
     </style>
+@endpush
+
+@push('scripts')
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const payButton = document.getElementById('pay-now-btn');
+
+            if (payButton) {
+                payButton.addEventListener('click', function() {
+                    // Disable button to prevent double clicks
+                    payButton.disabled = true;
+                    payButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Processing...';
+
+                    // Get CSRF token
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+                    // Make request to create checkout session
+                    fetch('{{ route('frontend.order-request.pay', $order->slug) }}', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': csrfToken,
+                                'Accept': 'application/json'
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.checkout_url) {
+                                // Redirect to Stripe Checkout
+                                window.location.href = data.checkout_url;
+                            } else {
+                                // Handle error
+                                alert(data.error || 'Failed to create payment session. Please try again.');
+                                payButton.disabled = false;
+                                payButton.innerHTML = '<i class="fa-solid fa-credit-card me-2"></i>Pay Now {{ number_format($due, 2) }} BDT';
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('An error occurred. Please try again.');
+                            payButton.disabled = false;
+                            payButton.innerHTML = '<i class="fa-solid fa-credit-card me-2"></i>Pay Now {{ number_format($due, 2) }} BDT';
+                        });
+                });
+            }
+        });
+    </script>
 @endpush

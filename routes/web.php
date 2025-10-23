@@ -3,6 +3,7 @@
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -17,11 +18,17 @@ Route::group(['as' => 'frontend.'], function () {
     Route::get('/get-sub-cities', [FrontendController::class, 'getSubCities'])->name('get-sub-cities');
     Route::get('/orders/{slug}', [FrontendController::class, 'orderRequestInvoice'])->name('order-request.invoice');
     Route::get('/orders/{slug}/invoice', [FrontendController::class, 'orderRequestInvoiceDownload'])->name('order-request.invoice.download');
+    Route::post('/orders/{slug}/pay', [PaymentController::class, 'createCheckoutSession'])->name('order-request.pay');
     Route::get('/thank-you/{tracking_number}', [FrontendController::class, 'thankYou'])->name('thank-you');
     Route::get('/track-order', [FrontendController::class, 'trackOrder'])->name('track-order');
     Route::post('/track-order', [FrontendController::class, 'trackOrderSubmit'])->name('track-order.submit');
     Route::get('/get-csrf-token', [FrontendController::class, 'getCsrfToken'])->name('get-csrf-token');
 });
+
+// Payment routes
+Route::get('/payment/success', [PaymentController::class, 'handleSuccess'])->name('payment.success');
+Route::get('/payment/cancel', [PaymentController::class, 'handleCancel'])->name('payment.cancel');
+Route::post('/stripe/webhook', [PaymentController::class, 'webhook'])->name('stripe.webhook');
 
 // User Dashboard Routes
 Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth']], function () {
