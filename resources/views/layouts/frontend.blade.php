@@ -22,6 +22,12 @@
         <!-- select2 -->
         <link rel="stylesheet" href="{{ asset('vendor/select2-4.1.0/select2.min.css') }}">
 
+        <style>
+            :root {
+                --hero-bg: url('{{ asset('assets/images/hero-bg-borderless.jpg') }}');
+            }
+        </style>
+
         <!-- custom css -->
         <link rel="stylesheet" href="{{ asset('assets/frontend/style.css') }}?v={{ time() }}">
 

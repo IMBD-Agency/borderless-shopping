@@ -43,100 +43,17 @@
                 </div>
                 <div class="col-lg-6 reveal reveal-right">
                     <div class="hero-image-container">
-                        <div class="hero-image-wrapper">
-                            <img src="{{ asset('assets/images/shipping-vector.png') }}" alt="Shopping illustration" class="img-fluid hero-image">
-                            <div class="floating-card card-1">
-                                <i class="fa-solid fa-truck text-accent"></i>
-                                <span>Fast Delivery</span>
+                        <div class="video-container">
+                            <div class="video-thumbnail" data-bs-toggle="modal" data-bs-target="#videoModal">
+                                <img src="{{ asset('assets/images/shipping-vector.png') }}" alt="How BorderlesShopping Works" class="img-fluid">
+                                <div class="play-button">
+                                    <i class="fa-solid fa-play"></i>
+                                </div>
+                                <div class="video-overlay">
+                                    <h4>Watch How It Works</h4>
+                                    <p>See how easy it is to shop from Australia</p>
+                                </div>
                             </div>
-                            <div class="floating-card card-2">
-                                <i class="fa-solid fa-shield-check text-accent"></i>
-                                <span>Secure Payment</span>
-                            </div>
-                            <div class="floating-card card-3">
-                                <i class="fa-solid fa-headset text-accent"></i>
-                                <span>24/7 Support</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works - Combined Video & Process -->
-    <section id="how-it-works" class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">How It Works</h2>
-                <p class="lead text-muted">Simple steps to get your favorite Australian products delivered to Bangladesh</p>
-            </div>
-
-            <!-- Video Section -->
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8">
-                    <div class="video-container reveal reveal-up">
-                        <div class="video-thumbnail" data-bs-toggle="modal" data-bs-target="#videoModal">
-                            <img src="{{ asset('assets/images/shipping-vector.png') }}" alt="How BorderlessShopping Works" class="img-fluid">
-                            <div class="play-button">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                            <div class="video-overlay">
-                                <h4>Watch Our Tutorial</h4>
-                                <p>See how easy it is to shop from Australia</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Process Steps -->
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4 reveal">
-                    <div class="process-card">
-                        <div class="process-icon">
-                            <i class="fa-solid fa-link"></i>
-                        </div>
-                        <div class="process-number">01</div>
-                        <div class="process-arrow d-none d-lg-block">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                        <h4>Submit Product Link</h4>
-                        <p class="text-muted">Share the product URL from any Australian online store along with quantity and your shipping preferences.</p>
-                        <div class="process-features">
-                            <span class="feature-tag">Any Australian Store</span>
-                            <span class="feature-tag">Multiple Products</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 reveal" style="transition-delay: 120ms">
-                    <div class="process-card">
-                        <div class="process-icon">
-                            <i class="fa-solid fa-calculator"></i>
-                        </div>
-                        <div class="process-number">02</div>
-                        <div class="process-arrow d-none d-lg-block">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                        <h4>Get Instant Quote</h4>
-                        <p class="text-muted">Receive a detailed quote with product price, shipping costs, and our dynamic service fee based on product type and quantity.</p>
-                        <div class="process-features">
-                            <span class="feature-tag">Dynamic Pricing</span>
-                            <span class="feature-tag">No Hidden Fees</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 reveal" style="transition-delay: 240ms">
-                    <div class="process-card">
-                        <div class="process-icon">
-                            <i class="fa-solid fa-truck-fast"></i>
-                        </div>
-                        <div class="process-number">03</div>
-                        <h4>We Handle Everything</h4>
-                        <p class="text-muted">We purchase, pack, and ship your products directly to your address in Bangladesh with full tracking.</p>
-                        <div class="process-features">
-                            <span class="feature-tag">Full Tracking</span>
-                            <span class="feature-tag">Secure Delivery</span>
                         </div>
                     </div>
                 </div>
@@ -149,12 +66,12 @@
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content video-modal">
                 <div class="modal-header video-modal__header">
-                    <h5 class="modal-title" id="videoModalLabel">How BorderlessShopping Works</h5>
+                    <h5 class="modal-title" id="videoModalLabel">How BorderlesShopping Works</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-0">
                     <div class="video-modal__frame">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="BorderlessShopping Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/B7r64l2YGxQ" title="BorderlesShopping Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -162,7 +79,7 @@
     </div>
 
     <!-- Order Form -->
-    <section id="order-form" class="py-5 bg-light">
+    <section id="order-form" class="py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12">
@@ -407,11 +324,161 @@
         </div>
     </section>
 
+    <!-- Shop From Australia -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Shop From Australia</h2>
+                <p class="lead text-muted">Shop from Australia with ease and convenience. We offer a wide range of products from Australia to Bangladesh.</p>
+            </div>
+
+            <!-- Brand Logos Section -->
+            <div class="brand-logos-section">
+                <div class="brand-logos-grid">
+                    <!-- Australian E-commerce Websites -->
+                    <a href="https://www.apple.com/au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 50ms">
+                        <img src="{{ asset('assets/images/brands/apple.png') }}" alt="Apple Australia" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.woolworths.com.au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 100ms">
+                        <img src="{{ asset('assets/images/brands/woolworths.png') }}" alt="Woolworths" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.amazon.com.au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 150ms">
+                        <img src="{{ asset('assets/images/brands/amazon.png') }}" alt="Amazon Australia" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.coles.com.au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 200ms">
+                        <img src="{{ asset('assets/images/brands/coles.png') }}" alt="Coles" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.ebay.com.au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 250ms">
+                        <img src="{{ asset('assets/images/brands/ebay.png') }}" alt="eBay Australia" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.chemistwarehouse.com.au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 300ms">
+                        <img src="{{ asset('assets/images/brands/chemist-warehouse.png') }}" alt="Chemist Warehouse" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.harveynorman.com.au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 350ms">
+                        <img src="{{ asset('assets/images/brands/harveynorman.png') }}" alt="Harvey Norman" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.jbhifi.com.au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 400ms">
+                        <img src="{{ asset('assets/images/brands/jb-hifi.png') }}" alt="JB Hi-Fi" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.myer.com.au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 450ms">
+                        <img src="{{ asset('assets/images/brands/myer.png') }}" alt="Myer" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.davidjones.com/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 500ms">
+                        <img src="{{ asset('assets/images/brands/david-jones.png') }}" alt="David Jones" class="brand-logo-img">
+                    </a>
+                    <a href="https://au.shein.com/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 550ms">
+                        <img src="{{ asset('assets/images/brands/shein.png') }}" alt="SHEIN Australia" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.sephora.com.au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 600ms">
+                        <img src="{{ asset('assets/images/brands/sephora.png') }}" alt="Sephora Australia" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.mecca.com/en-au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 650ms">
+                        <img src="{{ asset('assets/images/brands/mecca.png') }}" alt="Mecca" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.priceline.com.au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 700ms">
+                        <img src="{{ asset('assets/images/brands/PricelinePharmacy.png') }}" alt="Priceline" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.fossil.com/en-au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 750ms">
+                        <img src="{{ asset('assets/images/brands/fossil.png') }}" alt="Fossil Australia" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.templeandwebster.com.au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 800ms">
+                        <img src="{{ asset('assets/images/brands/temple-webster.png') }}" alt="Temple & Webster" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.adorebeauty.com.au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 850ms">
+                        <img src="{{ asset('assets/images/brands/adore-beauty.png') }}" alt="Adore Beauty" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.babybunting.com.au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 900ms">
+                        <img src="{{ asset('assets/images/brands/baby-bunting.png') }}" alt="Baby Bunting" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.shavershop.com.au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 950ms">
+                        <img src="{{ asset('assets/images/brands/shavershop.png') }}" alt="Shaver Shop" class="brand-logo-img">
+                    </a>
+                    <a href="https://www.michaelhill.com.au/" target="_blank" rel="noopener noreferrer" class="brand-logo-card reveal" style="transition-delay: 1000ms">
+                        <img src="{{ asset('assets/images/brands/michaelhill.png') }}" alt="Michael Hill" class="brand-logo-img">
+                    </a>
+                </div>
+
+                <div class="text-center mt-5">
+                    <p class="brand-note">
+                        <i class="fa-solid fa-info-circle me-2"></i>
+                        Don't see your favorite Australian store? No worries! We can help you shop from any Australian website.
+                    </p>
+                    <a href="#order-form" class="btn btn-accent btn-lg mt-3">
+                        <i class="fa-solid fa-link me-2"></i>
+                        Submit Product Link
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">How It Works</h2>
+                <p class="lead text-muted">Simple steps to get your favorite Australian products delivered to Bangladesh</p>
+            </div>
+
+            <!-- Process Steps -->
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4 reveal">
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fa-solid fa-link"></i>
+                        </div>
+                        <div class="process-number">01</div>
+                        <div class="process-arrow d-none d-lg-block">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <h4>Submit Product Link</h4>
+                        <p class="text-muted">Share the product URL from any Australian online store along with quantity and your shipping preferences.</p>
+                        <div class="process-features">
+                            <span class="feature-tag">Any Australian Store</span>
+                            <span class="feature-tag">Multiple Products</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 reveal" style="transition-delay: 120ms">
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <div class="process-number">02</div>
+                        <div class="process-arrow d-none d-lg-block">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <h4>Get Instant Quote</h4>
+                        <p class="text-muted">Receive a detailed quote with product price, shipping costs, and our dynamic service fee based on product type and quantity.</p>
+                        <div class="process-features">
+                            <span class="feature-tag">Dynamic Pricing</span>
+                            <span class="feature-tag">No Hidden Fees</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 reveal" style="transition-delay: 240ms">
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <div class="process-number">03</div>
+                        <h4>We Handle Everything</h4>
+                        <p class="text-muted">We purchase, pack, and ship your products directly to your address in Bangladesh with full tracking.</p>
+                        <div class="process-features">
+                            <span class="feature-tag">Full Tracking</span>
+                            <span class="feature-tag">Secure Delivery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Features -->
     <section class="py-5">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title">Why Choose BorderlessShopping?</h2>
+                <h2 class="section-title">Why Choose BorderlesShopping?</h2>
                 <p class="lead text-muted">Experience the best in cross-border shopping with our premium features</p>
             </div>
             <div class="row">

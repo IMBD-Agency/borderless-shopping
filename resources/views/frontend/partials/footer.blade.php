@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                 <div class="footer-brand">
-                    <h5 class="footer-title">BorderlessShopping</h5>
+                    <h5 class="footer-title">BorderlesShopping</h5>
                     <p class="footer-description">Making Australian shopping accessible to Bangladesh.</p>
                 </div>
             </div>
@@ -21,7 +21,7 @@
             </div>
             <div class="col-lg-4 col-md-12">
                 <div class="footer-copyright text-center text-lg-end">
-                    <p class="copyright-text">BorderlessShopping &copy; {{ now()->year }} | All rights reserved.</p>
+                    <p class="copyright-text">BorderlesShopping &copy; {{ now()->year }} | All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="footer-bottom text-center">
-                    <p class="footer-tagline">Connecting Australia to Bangladesh, one package at a time.</p>
+                    <p class="footer-tagline">Connecting Australia to Bangladesh.</p>
                 </div>
             </div>
         </div>

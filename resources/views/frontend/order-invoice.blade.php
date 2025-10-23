@@ -34,11 +34,6 @@
                             <span class="text-muted">Payment Status:</span>
                             <span>{{ ucfirst($order->payment_status) }}</span>
                         </div>
-                        @php $due = max(0, (float)($order->total_amount ?? 0) - (float)($order->total_paid_amount ?? 0)); @endphp
-                        @if ($order->total_amount)
-                            <div class="d-flex justify-content-between mb-1"><span class="text-muted">Paid</span><span>{{ number_format($order->total_paid_amount ?? 0, 2) }} BDT</span></div>
-                            <div class="d-flex justify-content-between"><span class="text-muted">Due</span><span>{{ number_format($due, 2) }} BDT</span></div>
-                        @endif
                         <div class="d-flex justify-content-between">
                             <span class="text-muted">Date:</span>
                             <span>{{ $order->created_at->format('d F Y') }}</span>
@@ -115,6 +110,11 @@
                         <div class="d-flex justify-content-between mb-2"><span class="text-muted">Service Charge</span><span>{{ number_format((float) $service, 2) }}</span></div>
                         <div class="d-flex justify-content-between mb-3"><span class="text-muted">Discount</span><span>-{{ number_format((float) $discount, 2) }}</span></div>
                         <div class="d-flex justify-content-between fw-bold total-row"><span>Total</span><span>{{ number_format((float) $total, 2) }} BDT</span></div>
+                        @php $due = max(0, (float)($order->total_amount ?? 0) - (float)($order->total_paid_amount ?? 0)); @endphp
+                        @if ($order->total_amount)
+                            <div class="d-flex justify-content-between mb-1 mt-3"><span class="text-muted">Paid</span><span>{{ number_format($order->total_paid_amount ?? 0, 2) }} BDT</span></div>
+                            <div class="d-flex justify-content-between"><span class="text-muted">Due</span><span>{{ number_format($due, 2) }} BDT</span></div>
+                        @endif
                     </div>
                 </div>
             </div>

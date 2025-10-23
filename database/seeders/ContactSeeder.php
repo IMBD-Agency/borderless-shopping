@@ -12,7 +12,7 @@ class ContactSeeder extends Seeder {
      */
     public function run(): void {
         Contact::create([
-            'email' => 'info@borderlessshopping.com',
+            'email' => 'info@BorderlesShopping.com',
             'phone' => '+8801717171717',
             'whatsapp' => '+8801717171717',
         ]);

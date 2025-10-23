@@ -246,23 +246,23 @@ class FrontendController extends Controller {
     }
 
     public function userOrders() {
-        $user = auth()->user();
-        $orders = ModelsOrderRequest::where('user_id', $user->id)
+        $this->user = auth()->user();
+        $this->orders = ModelsOrderRequest::where('user_id', $this->user->id)
             ->with('products')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
-        return view('frontend.user.orders', compact('user', 'orders'));
+        return view('frontend.user.orders', $this->data);
     }
 
     public function userOrderDetails($slug) {
-        $user = auth()->user();
-        $order = ModelsOrderRequest::where('user_id', $user->id)
+        $this->user = auth()->user();
+        $this->order = ModelsOrderRequest::where('user_id', $this->user->id)
             ->where('slug', $slug)
             ->with(['user', 'products', 'timelines.user'])
             ->firstOrFail();
 
-        return view('frontend.user.order-details', compact('order'));
+        return view('frontend.user.order-details', $this->data);
     }
 
     public function trackOrder() {
