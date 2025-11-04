@@ -20,8 +20,13 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-12">
-                <div class="footer-copyright text-center text-lg-end">
-                    <p class="copyright-text">BorderlesShopping &copy; {{ now()->year }} | All rights reserved.</p>
+                <div class="footer-links text-center text-lg-end">
+                    <h6 class="footer-social-title">Quick Links</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="{{ route('frontend.faq') }}" class="text-decoration-none">FAQs</a></li>
+                        <li class="mb-2"><a href="{{ route('frontend.privacy') }}" class="text-decoration-none">Privacy Policy</a></li>
+                        <li><a href="{{ route('frontend.terms') }}" class="text-decoration-none">Terms & Conditions</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -29,7 +34,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="footer-bottom text-center">
-                    <p class="footer-tagline">Connecting Australia to Bangladesh.</p>
+                    <p class="footer-tagline mb-2">Connecting Australia to Bangladesh.</p>
+                    <p class="copyright-text mb-0">BorderlesShopping &copy; {{ now()->year }} | All rights reserved.</p>
                 </div>
             </div>
         </div>

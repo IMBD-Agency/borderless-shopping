@@ -197,6 +197,7 @@ class BackendController extends Controller {
             'email' => ['required', 'email'],
             'phone' => ['required', 'string', 'max:255'],
             'whatsapp' => ['required', 'string', 'max:255'],
+            'youtube_tutorial' => ['nullable', 'string', 'max:255'],
         ]);
 
         $contact = Contact::first();

@@ -33,7 +33,7 @@ class UserController extends Controller {
         $rules = [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
-            'role' => 'required|in:admin,student',
+            'role' => 'required|in:admin,customer',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required',
         ];
@@ -91,7 +91,7 @@ class UserController extends Controller {
                 'email',
                 Rule::unique('users')->ignore($user->id),
             ],
-            'role' => 'required|in:super_admin,admin,student',
+            'role' => 'required|in:super_admin,admin,customer',
             'status' => 'required|in:active,inactive',
         ];
 

@@ -9,12 +9,13 @@ return new class extends Migration {
      * Run the migrations.
      */
     public function up(): void {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('phone');
-            $table->string('whatsapp');
-            $table->string('youtube_tutorial')->nullable();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->text('description')->nullable();
+            $table->integer('order')->default(0);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration {
      * Reverse the migrations.
      */
     public function down(): void {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('categories');
     }
 };

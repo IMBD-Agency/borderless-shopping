@@ -38,6 +38,13 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label">Youtube Tutorial</label>
+                            <input type="text" name="youtube_tutorial" class="form-control" value="{{ old('youtube_tutorial', optional($contact)->youtube_tutorial) }}" required>
+                            @error('youtube_tutorial')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
                         <button type="submit" class="btn btn-primary">Save Contact</button>
                     </form>
                 </div>

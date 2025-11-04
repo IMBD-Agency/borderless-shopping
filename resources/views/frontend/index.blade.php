@@ -45,7 +45,7 @@
                     <div class="hero-image-container">
                         <div class="video-container">
                             <div class="video-thumbnail" data-bs-toggle="modal" data-bs-target="#videoModal">
-                                <img src="{{ asset('assets/images/shipping-vector.png') }}" alt="How BorderlesShopping Works" class="img-fluid">
+                                <img src="{{ asset('assets/images/borderless-video-thumbnail.jpg') }}" alt="How BorderlesShopping Works" class="img-fluid">
                                 <div class="play-button">
                                     <i class="fa-solid fa-play"></i>
                                 </div>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="modal-body p-0">
                     <div class="video-modal__frame">
-                        <iframe src="https://www.youtube.com/embed/B7r64l2YGxQ" title="BorderlesShopping Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/{{ $contact_details->youtube_tutorial }}" title="BorderlesShopping Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                         <h3 class="mb-4 text-center">Submit Product Request</h3>
                         <p class="text-muted text-center mb-4">Enter the product link and details below to get started.</p>
 
-                        <!-- Order Success Alert (UI only; to be made dynamic later) -->
+                        <!-- Order Success Alert -->
                         <div id="orderSuccessAlert" class="alert bg-white shadow-sm rounded-3 border-0 p-0 mb-4 reveal reveal-up" role="alert">
                             <div class="p-3 p-md-4">
                                 <div class="d-flex justify-content-between align-items-start">
@@ -147,12 +147,12 @@
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label for="modalLoginEmail" class="form-label">Email</label>
-                                                    <input id="modalLoginEmail" type="email" name="email" class="form-control" autocomplete="email" required>
+                                                    <input id="modalLoginEmail" type="email" name="email" class="form-control" autocomplete="off" required>
                                                     <div class="text-danger error-text" id="loginEmail-error"></div>
                                                 </div>
                                                 <div class="col-md-6 mb-3">
                                                     <label for="modalLoginPassword" class="form-label">Password</label>
-                                                    <input id="modalLoginPassword" type="password" name="password" class="form-control" autocomplete="current-password" required>
+                                                    <input id="modalLoginPassword" type="password" name="password" class="form-control" autocomplete="off" required>
                                                 </div>
                                             </div>
                                             <button type="submit" class="btn btn-accent w-100">
@@ -166,16 +166,16 @@
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
                                                     <label for="modalRegName" class="form-label">Name</label>
-                                                    <input id="modalRegName" type="text" name="name" class="form-control" autocomplete="name" required>
+                                                    <input id="modalRegName" type="text" name="name" class="form-control" autocomplete="off" required>
                                                 </div>
                                                 <div class="col-md-6 mb-3">
                                                     <label for="modalRegEmail" class="form-label">Email</label>
-                                                    <input id="modalRegEmail" type="email" name="email" class="form-control" autocomplete="email" required>
+                                                    <input id="modalRegEmail" type="email" name="email" class="form-control" autocomplete="off" required>
                                                     <div class="text-danger error-text" id="registerEmail-error"></div>
                                                 </div>
                                                 <div class="col-md-6 mb-3">
                                                     <label for="modalRegPassword" class="form-label">Password</label>
-                                                    <input id="modalRegPassword" type="password" name="password" class="form-control" autocomplete="new-password" required>
+                                                    <input id="modalRegPassword" type="password" name="password" class="form-control" autocomplete="off" required>
                                                 </div>
                                             </div>
                                             <button type="submit" class="btn btn-accent w-100">
@@ -223,12 +223,12 @@
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <label class="form-label">Product URL <span class="text-danger">*</span></label>
-                                                <input type="url" name="product_urls[]" class="form-control product-url-input" placeholder="https://www.amazon.com.au/product-link" required>
+                                                <input type="url" name="product_urls[]" class="form-control product-url-input" placeholder="https://www.amazon.com.au/product-link" autocomplete="off" required>
                                                 <div class="text-danger error-text product-url-error"></div>
                                             </div>
                                             <div class="col-md-3">
                                                 <label class="form-label">Quantity <span class="text-danger">*</span></label>
-                                                <input type="number" name="product_quantities[]" class="form-control quantity-input" value="1" min="1" required>
+                                                <input type="number" name="product_quantities[]" class="form-control quantity-input" value="1" min="1" autocomplete="off" required>
                                                 <div class="text-danger error-text quantity-error"></div>
                                             </div>
                                             <div class="col-md-1 d-flex align-items-end">
@@ -255,12 +255,12 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="name" class="form-label">Recipient Name <span class="text-danger">*</span></label>
-                                        <input type="text" name="recipient_name" class="form-control" id="name" required>
+                                        <input type="text" name="recipient_name" class="form-control" id="name" autocomplete="off" required>
                                         <div class="text-danger error-text" id="recipient_name-error"></div>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="phone" class="form-label">Recipient Mobile Number <span class="text-danger">*</span></label>
-                                        <input type="tel" name="recipient_mobile" class="form-control" id="phone" placeholder="+880..." required>
+                                        <input type="tel" name="recipient_mobile" class="form-control" id="phone" placeholder="+880..." autocomplete="off" required>
                                         <div class="text-danger error-text" id="recipient_mobile-error"></div>
                                     </div>
                                 </div>
@@ -268,7 +268,7 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="district" class="form-label">District <span class="text-danger">*</span></label>
-                                        <select name="district" class="form-control select2" id="district" required>
+                                        <select name="district" class="form-control select2" id="district" autocomplete="off" required>
                                             <option value="">Select District</option>
                                             @foreach ($districts as $district)
                                                 <option value="{{ $district->id }}">{{ $district->name }}</option>
@@ -278,7 +278,7 @@
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="area" class="form-label">Area <span class="text-danger">*</span></label>
-                                        <select name="area" class="form-control select2" id="sub_city" required>
+                                        <select name="area" class="form-control select2" id="sub_city" autocomplete="off" required>
                                             <option value="">Select Area</option>
                                         </select>
                                         <div class="text-danger error-text" id="area-error"></div>
@@ -287,13 +287,13 @@
 
                                 <div class="mb-3">
                                     <label for="address" class="form-label">Recipient Address <span class="text-danger">*</span></label>
-                                    <textarea name="recipient_address" class="form-control" id="address" rows="3" placeholder="Enter complete address including house number, road, area" required></textarea>
+                                    <textarea name="recipient_address" class="form-control" id="address" rows="3" placeholder="Enter complete address including house number, road, area" autocomplete="off" required></textarea>
                                     <div class="text-danger error-text" id="recipient_address-error"></div>
                                 </div>
 
                                 <div class="mb-4">
                                     <label for="notes" class="form-label">Additional Notes (Optional)</label>
-                                    <textarea name="notes" class="form-control" id="notes" rows="2" placeholder="Any special instructions or requirements"></textarea>
+                                    <textarea name="notes" class="form-control" id="notes" rows="2" placeholder="Any special instructions or requirements" autocomplete="off"></textarea>
                                     <div class="text-danger error-text" id="notes-error"></div>
                                 </div>
                             </div>
@@ -995,12 +995,12 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <label class="form-label">Product URL <span class="text-danger">*</span></label>
-                                <input type="url" name="product_urls[]" class="form-control product-url-input" placeholder="https://www.amazon.com.au/product-link" required>
+                                            <input type="url" name="product_urls[]" class="form-control product-url-input" placeholder="https://www.amazon.com.au/product-link" autocomplete="off" required>
                                 <div class="text-danger error-text product-url-error"></div>
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label">Quantity <span class="text-danger">*</span></label>
-                                <input type="number" name="product_quantities[]" class="form-control quantity-input" value="1" min="1" required>
+                                <input type="number" name="product_quantities[]" class="form-control quantity-input" value="1" min="1" autocomplete="off" required>
                                 <div class="text-danger error-text quantity-error"></div>
                             </div>
                             <div class="col-md-1 d-flex align-items-end">
@@ -1149,12 +1149,12 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <label class="form-label">Product URL <span class="text-danger">*</span></label>
-                                            <input type="url" name="product_urls[]" class="form-control product-url-input" placeholder="https://www.amazon.com.au/product-link" value="${url}" required>
+                                            <input type="url" name="product_urls[]" class="form-control product-url-input" placeholder="https://www.amazon.com.au/product-link" value="${url}" autocomplete="off" required>
                                             <div class="text-danger error-text product-url-error"></div>
                                         </div>
                                         <div class="col-md-3">
                                             <label class="form-label">Quantity <span class="text-danger">*</span></label>
-                                            <input type="number" name="product_quantities[]" class="form-control quantity-input" value="${orderData.product_quantities[index] || 1}" min="1" required>
+                                            <input type="number" name="product_quantities[]" class="form-control quantity-input" value="${orderData.product_quantities[index] || 1}" min="1" autocomplete="off" required>
                                             <div class="text-danger error-text quantity-error"></div>
                                         </div>
                                         <div class="col-md-1 d-flex align-items-end">

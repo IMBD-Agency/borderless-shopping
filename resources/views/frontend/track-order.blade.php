@@ -39,7 +39,7 @@
                                     <div class="form-group">
                                         <label for="tracking_number" class="form-label">Tracking Number</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="tracking_number" name="tracking_number" placeholder="Enter tracking number (e.g., AU-XXXXXXXX)" value="{{ request('tracking_number') }}" required>
+                                            <input type="text" class="form-control" id="tracking_number" name="tracking_number" placeholder="Enter tracking number (e.g., AU-XXXXXXXX)" value="{{ request('tracking_number') }}" autocomplete="off" required>
                                             <button class="btn btn-accent" type="submit" id="trackButton">
                                                 <i class="fas fa-search me-2"></i>
                                                 <span class="button-text">Track Order</span>
@@ -551,88 +551,6 @@
 
 @push('styles')
     <style>
-        :root {
-            --accent-color: #ec1d25;
-            --dark-color: #2c3e50;
-            --text-muted: #6c757d;
-            --light-bg: #f8f9fa;
-            --border-color: #e9ecef;
-        }
-
-        .track-order-page {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #fef7f7 0%, #fdf2f2 100%);
-        }
-
-        /* Tracking Header */
-        .tracking-header {
-            padding: 2.5rem 0 1.5rem;
-            background: linear-gradient(135deg, var(--accent-color) 0%, #d32f2f 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tracking-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.1;
-        }
-
-        .tracking-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            position: relative;
-            z-index: 1;
-            color: white;
-        }
-
-        .tracking-subtitle {
-            font-size: 1.1rem;
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-            color: white;
-        }
-
-        /* Tracking Form Section */
-        .tracking-form-section {
-            padding: 3rem 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        .tracking-form-card {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            border: none;
-        }
-
-        .card-header {
-            background: linear-gradient(135deg, var(--accent-color) 0%, #d32f2f 100%);
-            color: white;
-            padding: 1rem;
-            border: none;
-        }
-
-        .card-title {
-            margin: 0;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        .card-body {
-            padding: 2rem;
-        }
-
         .form-group {
             margin-bottom: 1.5rem;
         }
@@ -645,7 +563,7 @@
 
         .input-group .form-control {
             border-radius: 10px 0 0 10px;
-            border: 2px solid var(--border-color);
+            border: 2px solid #e9ecef;
             padding: 1rem;
             font-size: 1.1rem;
             font-weight: 600;
@@ -677,11 +595,6 @@
         .form-text {
             margin-top: 0.5rem;
             font-size: 0.9rem;
-        }
-
-        /* Order Details Section */
-        .order-details-section {
-            padding: 3rem 0;
         }
 
         .order-header-card {
@@ -750,7 +663,6 @@
             color: white;
         }
 
-        /* Payment Status Badges */
         .payment-paid {
             background: #28a745;
             color: #fff;
@@ -769,94 +681,6 @@
             box-shadow: 0px 0px 5px #5b5b5b63;
         }
 
-        /* Timeline Card */
-        .timeline-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .timeline {
-            position: relative;
-            padding-left: 1rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #e9ecef;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2rem;
-        }
-
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-marker {
-            position: absolute;
-            left: -15px;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #e9ecef;
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px #e9ecef;
-            z-index: 2;
-        }
-
-        .timeline-item.active .timeline-marker {
-            background: var(--accent-color);
-            box-shadow: 0 0 0 2px var(--accent-color);
-        }
-
-        .timeline-item.completed .timeline-marker {
-            background: #28a745;
-            box-shadow: 0 0 0 2px #28a745;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.1);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .timeline-content {
-            padding-left: 1rem;
-        }
-
-        .timeline-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--dark-color);
-            margin-bottom: 0.5rem;
-            line-height: 1;
-        }
-
-        .timeline-description {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-            line-height: 1.5;
-        }
-
         .timeline-meta {
             display: flex;
             flex-direction: column;
@@ -873,37 +697,6 @@
             font-size: 0.8rem;
             color: var(--text-muted);
             font-style: italic;
-        }
-
-        /* Order Summary Card */
-        .order-summary-card,
-        .quick-actions-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .summary-item:last-child {
-            border-bottom: none;
-        }
-
-        .summary-label {
-            font-weight: 600;
-            color: var(--dark-color);
-        }
-
-        .summary-value {
-            color: var(--text-muted);
-            font-weight: 500;
         }
 
         .tracking-number {
@@ -933,90 +726,7 @@
             box-shadow: 0 5px 15px rgba(236, 29, 37, 0.3);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .tracking-title {
-                font-size: 2rem;
-            }
-
-            .tracking-subtitle {
-                font-size: 1rem;
-            }
-
-            .tracking-form-section {
-                padding: 2.5rem 0;
-            }
-
-            .order-title {
-                font-size: 1.75rem;
-            }
-
-            .timeline {
-                padding-left: 1.5rem;
-            }
-
-            .timeline-marker {
-                left: -12px;
-                width: 12px;
-                height: 12px;
-            }
-
-            .card-header {
-                padding: 1.25rem;
-            }
-
-            .card-body {
-                padding: 1.25rem;
-            }
-
-            .order-header-card {
-                padding: 1.5rem;
-            }
-
-            .summary-item {
-                padding: 0.875rem 0;
-            }
-        }
-
         @media (max-width: 576px) {
-            .tracking-header {
-                padding: 1.5rem 0 0.75rem;
-            }
-
-            .tracking-title {
-                font-size: 1.75rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .tracking-subtitle {
-                font-size: 0.9rem;
-            }
-
-            .tracking-form-section {
-                margin-top: -0.5rem;
-                padding: 2rem 0;
-            }
-
-            .tracking-form-card {
-                margin: 0 0.5rem;
-            }
-
-            .card-header {
-                padding: 1rem;
-            }
-
-            .card-body {
-                padding: 1rem;
-            }
-
-            .order-title {
-                font-size: 1.25rem;
-            }
-
-            .order-subtitle {
-                font-size: 0.9rem;
-            }
-
             .input-group .form-control {
                 font-size: 1rem;
                 padding: 0.75rem;
@@ -1031,56 +741,16 @@
                 display: none;
             }
 
-            .order-header-card {
-                padding: 1rem;
-                margin: 0 0.5rem 1rem 0.5rem;
+            .order-title {
+                font-size: 1.25rem;
             }
 
-            .timeline-card,
-            .order-summary-card,
-            .quick-actions-card {
-                margin: 0 0.5rem 1rem 0.5rem;
-            }
-
-            .timeline {
-                padding-left: 0.75rem;
-            }
-
-            .timeline-marker {
-                left: -8px;
-                width: 10px;
-                height: 10px;
-            }
-
-            .timeline-content {
-                padding-left: 0.75rem;
-            }
-
-            .timeline-title {
-                font-size: 1rem;
-            }
-
-            .timeline-description {
-                font-size: 0.85rem;
+            .order-subtitle {
+                font-size: 0.9rem;
             }
 
             .timeline-date {
                 font-size: 0.75rem;
-            }
-
-            .summary-item {
-                padding: 0.75rem 0;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.25rem;
-            }
-
-            .summary-label {
-                font-size: 0.9rem;
-            }
-
-            .summary-value {
-                font-size: 0.9rem;
             }
 
             .btn-outline {
@@ -1090,39 +760,6 @@
         }
 
         @media (max-width: 480px) {
-            .tracking-header {
-                padding: 1.25rem 0 0.5rem;
-            }
-
-            .tracking-title {
-                font-size: 1.5rem;
-            }
-
-            .tracking-subtitle {
-                font-size: 0.85rem;
-            }
-
-            .tracking-form-section {
-                padding: 1.5rem 0;
-            }
-
-            .tracking-form-card {
-                margin: 0 0.25rem;
-                border-radius: 15px;
-            }
-
-            .card-header {
-                padding: 0.875rem;
-            }
-
-            .card-body {
-                padding: 0.875rem;
-            }
-
-            .form-label {
-                font-size: 0.9rem;
-            }
-
             .input-group .form-control {
                 font-size: 0.9rem;
                 padding: 0.625rem;
@@ -1137,11 +774,6 @@
                 display: none;
             }
 
-            .order-header-card {
-                padding: 0.875rem;
-                margin: 0 0.25rem 0.75rem 0.25rem;
-            }
-
             .order-title {
                 font-size: 1.125rem;
             }
@@ -1150,49 +782,8 @@
                 font-size: 0.8rem;
             }
 
-            .timeline-card,
-            .order-summary-card,
-            .quick-actions-card {
-                margin: 0 0.25rem 0.75rem 0.25rem;
-            }
-
-            .timeline {
-                padding-left: 0.5rem;
-            }
-
-            .timeline-marker {
-                left: -4px;
-                top: 2px;
-                width: 8px;
-                height: 8px;
-            }
-
-            .timeline-content {
-                padding-left: 0.5rem;
-            }
-
-            .timeline-title {
-                font-size: 0.9rem;
-            }
-
-            .timeline-description {
-                font-size: 0.8rem;
-            }
-
             .timeline-date {
                 font-size: 0.7rem;
-            }
-
-            .summary-item {
-                padding: 0.625rem 0;
-            }
-
-            .summary-label {
-                font-size: 0.85rem;
-            }
-
-            .summary-value {
-                font-size: 0.85rem;
             }
 
             .btn-outline {

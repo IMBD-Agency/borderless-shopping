@@ -33,9 +33,9 @@ function isAdmin() {
     return isRole('admin');
 }
 
-//isStudent
-function isStudent() {
-    return isRole('student');
+//isCustomer
+function isCustomer() {
+    return isRole('customer');
 }
 
 //generate unique 8 digit id
@@ -65,23 +65,80 @@ function generateUnique8DigitId($prefix = 'AU-', $suffix = '', int $maxAttempts 
 }
 
 //convert aud to bdt
-function convertAudToBdt($amount) {
-    $req_url = "https://v6.exchangerate-api.com/v6/" . env('EXCHANGERATE_API') . "/latest/AUD";
+function convertAudToBdt($amount = 1) {
+    $req_url = "https://v6.exchangerate-api.com/v6/" . env('EXCHANGERATE_API') . "/pair/AUD/BDT";
     $response_json = file_get_contents($req_url);
 
     if (false !== $response_json) {
         try {
             $response = json_decode($response_json);
-
             if ('success' === $response->result) {
                 $base_price = $amount;
-                $bdt_price = round(($base_price * $response->conversion_rates->BDT), 2);
+                $bdt_price = round(($base_price * $response->conversion_rate), 2);
                 return $bdt_price;
             }
         } catch (Exception $e) {
             Log::error($e);
         }
     }
+}
+
+//extract youtube id from url
+function extractYouTubeId(string $input) {
+    // Trim whitespace
+    $input = trim($input);
+
+    // If input already looks like a plain 11-character ID, return it
+    if (preg_match('/^[a-zA-Z0-9_-]{11}$/', $input)) {
+        return $input;
+    }
+
+    // Try parsing as a URL first
+    if (filter_var($input, FILTER_VALIDATE_URL)) {
+        $parts = parse_url($input);
+
+        // 1) Query param v= (standard watch URL)
+        if (!empty($parts['query'])) {
+            parse_str($parts['query'], $query);
+            if (!empty($query['v']) && preg_match('/^[a-zA-Z0-9_-]{11}$/', $query['v'])) {
+                return $query['v'];
+            }
+        }
+
+        // 2) Path-based formats: /embed/ID, /v/ID, /shorts/ID, or youtu.be/ID
+        if (!empty($parts['path'])) {
+            // Remove leading/trailing slashes
+            $path = trim($parts['path'], '/');
+            $segments = explode('/', $path);
+
+            // Common patterns: embed/ID, v/ID, shorts/ID, or just ID for youtu.be
+            $possible = end($segments);
+            if (preg_match('/^[a-zA-Z0-9_-]{11}$/', $possible)) {
+                return $possible;
+            }
+
+            // For youtu.be the ID may be the first segment
+            $host = $parts['host'] ?? '';
+            if (strpos($host, 'youtu.be') !== false) {
+                $first = $segments[0] ?? '';
+                if (preg_match('/^[a-zA-Z0-9_-]{11}$/', $first)) {
+                    return $first;
+                }
+            }
+        }
+    }
+
+    // 3) As a last resort, try a wide regex that looks for the 11-char ID in common URL patterns or plain text
+    if (preg_match('/(?:youtube(?:-nocookie)?\.com\/(?:watch\?.*v=|embed\/|v\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/i', $input, $m)) {
+        return $m[1];
+    }
+
+    // 4) Final fallback: any standalone 11-char token found in the string
+    if (preg_match('/\b([a-zA-Z0-9_-]{11})\b/', $input, $m)) {
+        return $m[1];
+    }
+
+    return false;
 }
 
 //scrapingbee api

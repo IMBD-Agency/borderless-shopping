@@ -64,7 +64,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="name" class="form-label">Full Name</label>
-                                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $user->name) }}" required>
+                                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $user->name) }}" autocomplete="off" required>
                                                 @error('name')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
@@ -73,7 +73,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="email" class="form-label">Email Address</label>
-                                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $user->email) }}" required>
+                                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $user->email) }}" autocomplete="off" required>
                                                 @error('email')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
@@ -107,7 +107,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="current_password" class="form-label">Current Password</label>
-                                                <input type="password" class="form-control @error('current_password') is-invalid @enderror" id="current_password" name="current_password" required>
+                                                <input type="password" class="form-control @error('current_password') is-invalid @enderror" id="current_password" name="current_password" autocomplete="off" required>
                                                 @error('current_password')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
@@ -116,7 +116,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="new_password" class="form-label">New Password</label>
-                                                <input type="password" class="form-control @error('new_password') is-invalid @enderror" id="new_password" name="new_password" required>
+                                                <input type="password" class="form-control @error('new_password') is-invalid @enderror" id="new_password" name="new_password" autocomplete="off" required>
                                                 @error('new_password')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
@@ -125,7 +125,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="new_password_confirmation" class="form-label">Confirm Password</label>
-                                                <input type="password" class="form-control" id="new_password_confirmation" name="new_password_confirmation" required>
+                                                <input type="password" class="form-control" id="new_password_confirmation" name="new_password_confirmation" autocomplete="off" required>
                                             </div>
                                         </div>
                                     </div>
@@ -167,7 +167,7 @@
                                         @method('PUT')
 
                                         <div class="mb-3">
-                                            <input type="file" class="form-control @error('profile_picture') is-invalid @enderror" id="profile_picture" name="profile_picture" accept=".jpg,.jpeg,.png" required>
+                                            <input type="file" class="form-control @error('profile_picture') is-invalid @enderror" id="profile_picture" name="profile_picture" accept=".jpg,.jpeg,.png" autocomplete="off" required>
                                             <small class="text-muted">Supported formats: JPG, JPEG, PNG (Max: 2MB)</small>
                                             @error('profile_picture')
                                                 <div class="invalid-feedback">{{ $message }}</div>

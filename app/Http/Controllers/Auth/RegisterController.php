@@ -65,7 +65,7 @@ class RegisterController extends Controller {
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => 'student', // Default role for new registrations
+            'role' => 'customer', // Default role for new registrations
             'status' => 'active', // Default status for new registrations
             'send_notification' => isset($data['send_notification']) ? (bool) $data['send_notification'] : false,
         ]);

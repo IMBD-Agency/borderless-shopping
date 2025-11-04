@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder {
             ContactSeeder::class,
             SocialMediaSeeder::class,
             ReviewSeeder::class,
+            CategorySeeder::class,
+            FaqSeeder::class,
         ]);
     }
 }

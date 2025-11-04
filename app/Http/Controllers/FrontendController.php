@@ -19,6 +19,7 @@ use App\Mail\OrderReceivedAdminNotificationMail;
 use App\Models\Contact;
 use App\Models\Review;
 use App\Models\SocialMedia;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
 class FrontendController extends Controller {
@@ -33,6 +34,35 @@ class FrontendController extends Controller {
         $this->reviews = Review::inRandomOrder()->take(3)->get();
         return view('frontend.index', $this->data);
     }
+
+    public function about() {
+        $this->contact_details = Contact::first();
+        $this->reviews = Review::inRandomOrder()->take(3)->get();
+        return view('frontend.about', $this->data);
+    }
+
+    public function contact() {
+        $this->contact_details = Contact::first();
+        return view('frontend.contact', $this->data);
+    }
+
+    public function privacy() {
+        $this->contact_details = Contact::first();
+        return view('frontend.privacy', $this->data);
+    }
+
+    public function terms() {
+        $this->contact_details = Contact::first();
+        return view('frontend.terms', $this->data);
+    }
+
+    public function faq() {
+        $this->contact_details = Contact::first();
+        $this->faqs = \App\Models\Faq::with('category')->active()->ordered()->get();
+        return view('frontend.faq', $this->data);
+    }
+
+    // contactSubmit removed as the contact page no longer has a form
 
     public function orderRequest(OrderRequest $request) {
         $user = null;
@@ -303,5 +333,111 @@ class FrontendController extends Controller {
 
     public function getCsrfToken() {
         return response()->json(['csrf_token' => csrf_token()]);
+    }
+
+    public function priceCalculator() {
+        $this->price_list = [
+            [
+                "item" => "AirPods/Buds",
+                "price" => 50,
+                "unit" => ""
+            ],
+            [
+                "item" => "Auto Mobile Parts & Car Accessories",
+                "price" => 30,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "Blood Sugar/BP Device",
+                "price" => 17,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "Books",
+                "price" => 17,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "Chocolates",
+                "price" => 17,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "Clothing",
+                "price" => 17,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "Dry Foods",
+                "price" => 17,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "DSLR Camera (Up to 1kg)",
+                "price" => 100,
+                "unit" => ""
+            ],
+            [
+                "item" => "Electrical Appliances",
+                "price" => 17,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "iPad & Tab (Up to 1kg)",
+                "price" => 100,
+                "unit" => ""
+            ],
+            [
+                "item" => "Laptop (Up to 2.5kg)",
+                "price" => 150,
+                "unit" => ""
+            ],
+            [
+                "item" => "Leather Items",
+                "price" => 17,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "Make Up & Beauty Products",
+                "price" => 25,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "Shampoo & Lotion",
+                "price" => 20,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "Shoes",
+                "price" => 17,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "Smart Watch",
+                "price" => 85,
+                "unit" => ""
+            ],
+            [
+                "item" => "Tech Item & Computer Equipment",
+                "price" => 35,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "Vitamin & Supplement",
+                "price" => 27,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "XBOX/PS/Gaming Console (Up to 2.5kg)",
+                "price" => 120,
+                "unit" => ""
+            ]
+        ];
+
+        $this->aud_rate = Cache::remember('aud_rate', 60, function () {
+            return convertAudToBdt();
+        });
+
+        return view('frontend.price-calculator', $this->data);
     }
 }

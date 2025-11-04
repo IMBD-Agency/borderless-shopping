@@ -11,6 +11,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('frontend.track-order') }}">Track Order</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('frontend.price-calculator') }}">Price Calculator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('frontend.about') }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('frontend.contact') }}">Contact</a>
+                </li>
                 @auth
                     <!-- User Dropdown for authenticated users -->
                     <li class="nav-item dropdown">

@@ -144,4 +144,10 @@ $(document).ready(function () {
             allowClear: true
         }
     );
+
+    $('.navbar-nav .nav-link').each(function () {
+        if (this.href === window.location.href) {
+            $(this).addClass('active');
+        }
+    });
 });

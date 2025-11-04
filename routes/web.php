@@ -5,6 +5,8 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +16,11 @@ Auth::routes();
 //route group frontend
 Route::group(['as' => 'frontend.'], function () {
     Route::get('/', [FrontendController::class, 'index'])->name('index');
+    Route::get('/about', [FrontendController::class, 'about'])->name('about');
+    Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+    Route::get('/privacy-policy', [FrontendController::class, 'privacy'])->name('privacy');
+    Route::get('/terms-and-conditions', [FrontendController::class, 'terms'])->name('terms');
+    Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
     Route::post('/order-request', [FrontendController::class, 'orderRequest'])->name('order-request');
     Route::get('/get-sub-cities', [FrontendController::class, 'getSubCities'])->name('get-sub-cities');
     Route::get('/orders/{slug}', [FrontendController::class, 'orderRequestInvoice'])->name('order-request.invoice');
@@ -23,6 +30,7 @@ Route::group(['as' => 'frontend.'], function () {
     Route::get('/track-order', [FrontendController::class, 'trackOrder'])->name('track-order');
     Route::post('/track-order', [FrontendController::class, 'trackOrderSubmit'])->name('track-order.submit');
     Route::get('/get-csrf-token', [FrontendController::class, 'getCsrfToken'])->name('get-csrf-token');
+    Route::get('/price-calculator', [FrontendController::class, 'priceCalculator'])->name('price-calculator');
 });
 
 // Payment routes
@@ -86,6 +94,22 @@ Route::group(['prefix' => 'dashboard', 'as' => 'backend.', 'middleware' => ['aut
     Route::get('/reviews/create', [ReviewController::class, 'create'])->name('reviews.create');
     Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
     Route::get('/reviews/delete/{id}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
+
+    // faq categories
+    Route::get('/faq/categories', [CategoryController::class, 'index'])->name('faq.categories.index');
+    Route::get('/faq/categories/create', [CategoryController::class, 'create'])->name('faq.categories.create');
+    Route::post('/faq/categories', [CategoryController::class, 'store'])->name('faq.categories.store');
+    Route::get('/faq/categories/edit/{id}', [CategoryController::class, 'edit'])->name('faq.categories.edit');
+    Route::put('/faq/categories/update/{id}', [CategoryController::class, 'update'])->name('faq.categories.update');
+    Route::get('/faq/categories/delete/{id}', [CategoryController::class, 'destroy'])->name('faq.categories.destroy');
+
+    // faqs
+    Route::get('/faqs', [FaqController::class, 'index'])->name('faqs.index');
+    Route::get('/faqs/create', [FaqController::class, 'create'])->name('faqs.create');
+    Route::post('/faqs', [FaqController::class, 'store'])->name('faqs.store');
+    Route::get('/faqs/edit/{id}', [FaqController::class, 'edit'])->name('faqs.edit');
+    Route::put('/faqs/update/{id}', [FaqController::class, 'update'])->name('faqs.update');
+    Route::get('/faqs/delete/{id}', [FaqController::class, 'destroy'])->name('faqs.destroy');
 
     //debug routes
     Route::get('/debug', [BackendController::class, 'debug'])->name('debug');

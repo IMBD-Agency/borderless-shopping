@@ -44,6 +44,20 @@
                 </li>
 
                 <li class="sidebar-nav-item">
+                    <a href="{{ route('backend.faqs.index') }}" class="sidebar-nav-link {{ request()->routeIs('backend.faqs*') ? 'active' : '' }}">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="sidebar-nav-text">FAQs</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-nav-item">
+                    <a href="{{ route('backend.faq.categories.index') }}" class="sidebar-nav-link {{ request()->routeIs('backend.faq.categories*') ? 'active' : '' }}">
+                        <i class="fas fa-folder"></i>
+                        <span class="sidebar-nav-text">FAQ Categories</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-nav-item">
                     <a href="{{ route('backend.settings') }}" class="sidebar-nav-link {{ request()->routeIs('backend.settings*') ? 'active' : '' }}">
                         <i class="fas fa-cog"></i>
                         <span class="sidebar-nav-text">Settings</span>
