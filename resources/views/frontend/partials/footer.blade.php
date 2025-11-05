@@ -4,7 +4,7 @@
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                 <div class="footer-brand">
                     <h5 class="footer-title">BorderlesShopping</h5>
-                    <p class="footer-description">Making Australian shopping accessible to Bangladesh.</p>
+                    <p class="footer-description">Shop Like a Local</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">

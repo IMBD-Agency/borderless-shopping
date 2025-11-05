@@ -14,24 +14,19 @@ class SocialMediaSeeder extends Seeder {
         $socialMedia = [
             [
                 'name' => 'Facebook',
-                'url' => 'https://www.facebook.com/BorderlesShopping',
+                'url' => 'https://www.facebook.com/borderlesshopping.com.au',
                 'icon' => 'fab fa-facebook',
             ],
             [
-                'name' => 'Twitter',
-                'url' => 'https://www.twitter.com/BorderlesShopping',
-                'icon' => 'fab fa-twitter',
-            ],
-            [
                 'name' => 'Instagram',
-                'url' => 'https://www.instagram.com/BorderlesShopping',
+                'url' => 'https://www.instagram.com/borderlesshopping',
                 'icon' => 'fab fa-instagram',
             ],
             [
-                'name' => 'LinkedIn',
-                'url' => 'https://www.linkedin.com/BorderlesShopping',
-                'icon' => 'fab fa-linkedin',
-            ],
+                'name' => 'Pinterest',
+                'url' => 'https://www.pinterest.com/borderlesshopping',
+                'icon' => 'fab fa-pinterest',
+            ]
         ];
 
         foreach ($socialMedia as $media) {

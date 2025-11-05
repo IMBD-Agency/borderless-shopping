@@ -9,7 +9,11 @@
                     <div class="hero-badge mb-3">
                         <span class="badge bg-accent-subtle text-accent px-3 py-2 rounded-pill">
                             <i class="fa-solid fa-star me-1"></i>
-                            Trusted by 1,200+ customers
+                            Trusted by {{ totalCustomersCount() }}+ customers
+                        </span>
+                        <span class="badge bg-accent-subtle text-accent px-3 py-2 rounded-pill">
+                            <i class="fa-solid fa-earth-oceania"></i>
+                            Shop Like a Local
                         </span>
                     </div>
                     <h1 class="hero-title">Shop from Australian stores and ship to Bangladesh</h1>
@@ -27,7 +31,7 @@
                     <div class="hero-stats d-none d-md-block mt-4">
                         <div class="row text-center">
                             <div class="col-4">
-                                <div class="stat-number">2,500+</div>
+                                <div class="stat-number">{{ totalOrdersCount() }}+</div>
                                 <div class="stat-label">Orders Delivered</div>
                             </div>
                             <div class="col-4">
@@ -35,7 +39,7 @@
                                 <div class="stat-label">Success Rate</div>
                             </div>
                             <div class="col-4">
-                                <div class="stat-number">15+</div>
+                                <div class="stat-number">64+</div>
                                 <div class="stat-label">Cities Covered</div>
                             </div>
                         </div>
@@ -71,7 +75,7 @@
                 </div>
                 <div class="modal-body p-0">
                     <div class="video-modal__frame">
-                        <iframe src="https://www.youtube.com/embed/{{ $contact_details->youtube_tutorial }}" title="BorderlesShopping Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/{{ extractYouTubeId($contact_details->youtube_tutorial) }}" title="BorderlesShopping Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -569,7 +573,7 @@
                         <div class="stat-icon">
                             <i class="fa-solid fa-box"></i>
                         </div>
-                        <span class="stat-number" data-count="2500">0</span>
+                        <span class="stat-number" data-count="{{ totalOrdersCount() }}">0</span>
                         <div class="stat-label">Orders Delivered</div>
                         <div class="stat-sublabel">and counting...</div>
                     </div>
@@ -579,7 +583,7 @@
                         <div class="stat-icon">
                             <i class="fa-solid fa-users"></i>
                         </div>
-                        <span class="stat-number" data-count="1200">0</span>
+                        <span class="stat-number" data-count="{{ totalCustomersCount() }}">0</span>
                         <div class="stat-label">Happy Customers</div>
                         <div class="stat-sublabel">and growing</div>
                     </div>
@@ -589,7 +593,7 @@
                         <div class="stat-icon">
                             <i class="fa-solid fa-map-marker-alt"></i>
                         </div>
-                        <span class="stat-number" data-count="15">0</span>
+                        <span class="stat-number" data-count="64">0</span>
                         <div class="stat-label">Cities Covered</div>
                         <div class="stat-sublabel">across Bangladesh</div>
                     </div>

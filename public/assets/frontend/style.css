@@ -908,7 +908,9 @@ body {
 
 /* Hero Section Enhancements */
 .hero-badge {
-    display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
 .bg-accent-subtle {

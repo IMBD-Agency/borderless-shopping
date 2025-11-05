@@ -15,7 +15,7 @@ class ReviewSeeder extends Seeder {
             [
                 'name' => 'Ahmed Rahman',
                 'location' => 'Dhaka, Bangladesh',
-                'comment' => 'Amazing service! Got my iPhone delivered from Australia within 2 weeks. The process was so simple and transparent.'
+                'comment' => 'Amazing service! Got my sneakers delivered from the Australia in just 2 weeks. The whole process was easy and completely transparent.'
             ],
             [
                 'name' => 'Fatima Khan',
@@ -24,7 +24,7 @@ class ReviewSeeder extends Seeder {
             ],
             [
                 'name' => 'Mohammad Ali',
-                'location' => 'Sylhet, Bangladesh',
+                'location' => 'Dhaka, Bangladesh',
                 'comment' => 'I\'ve used this service multiple times. Always professional, fast, and my packages arrive in perfect condition.'
             ]
         ];

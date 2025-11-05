@@ -2,6 +2,7 @@
 
 use App\Models\OrderRequest;
 use App\Models\OrderRequestProduct;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -177,4 +178,14 @@ function scrapingbeeApi($order) {
         // close curl resource to free up system resources
         curl_close($ch);
     }
+}
+
+//total customers count
+function totalCustomersCount() {
+    return User::where('role', 'customer')->count() + 500;
+}
+
+//total orders count
+function totalOrdersCount() {
+    return OrderRequest::count() + 500;
 }

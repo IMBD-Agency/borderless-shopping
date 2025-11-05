@@ -12,10 +12,10 @@ class ContactSeeder extends Seeder {
      */
     public function run(): void {
         Contact::create([
-            'email' => 'info@BorderlesShopping.com',
-            'phone' => '+8801717171717',
-            'whatsapp' => '+8801717171717',
-            'youtube_tutorial' => 'https://youtu.be/B7r64l2YGxQ',
+            'email' => 'info@borderlessgroup.com.au',
+            'phone' => '+61451807841',
+            'whatsapp' => '+61451807841',
+            'youtube_tutorial' => 'https://www.youtube.com/watch?v=2iIOEH_tbMU',
         ]);
     }
 }
