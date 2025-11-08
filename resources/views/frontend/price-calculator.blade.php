@@ -39,7 +39,9 @@
                                                     <select name="category_id[]" class="form-control select2" id="category-select" autocomplete="off">
                                                         <option value="">Select Category</option>
                                                         @foreach ($price_list as $item)
-                                                            <option value="{{ $item['item'] }}">{{ $item['item'] }}</option>
+                                                            <option value="{{ $item['item'] }}">
+                                                                {{ $item['item'] }}{{ $item['item'] === 'General Goods' && !empty($item['note']) ? ' - ' . $item['note'] : '' }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                     <div class="text-danger error-text category-error"></div>
@@ -128,7 +130,10 @@
                                                 </div>
                                                 <div class="summary-row">
                                                     <span class="label">Shipping Charge (AU to BD)</span>
-                                                    <span class="value" id="sumCategoryCharge">AUD 0.00</span>
+                                                    <span class="value">
+                                                        <span id="sumCategoryCharge">AUD 0.00</span>
+                                                        <small id="customQuoteShippingNote" class="d-block text-warning mt-1" style="display: none;"></small>
+                                                    </span>
                                                 </div>
                                                 <div class="summary-row">
                                                     <span class="label">Subtotal</span>
@@ -364,6 +369,55 @@
             margin-bottom: 0;
             line-height: 1.65;
         }
+
+        /* Disabled field styling */
+        .product-weight-input:disabled,
+        .product-weight-unit-input:disabled,
+        .product-quantity-input:disabled {
+            background-color: #e9ecef;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        /* Custom quote styling */
+        .line-total-value.text-warning,
+        .line-total-value .text-warning {
+            font-weight: 600;
+            color: #ffc107 !important;
+        }
+
+        .custom-quote-note {
+            font-weight: 500;
+        }
+
+        /* Category note styling */
+        .category-note {
+            font-size: 0.75rem;
+            line-height: 1.3;
+            flex-shrink: 0;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #customQuoteShippingNote {
+            font-size: 0.75rem;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-top: 0.25rem;
+        }
+
+        /* Make the value container for shipping charge a flex column */
+        .summary-row:has(#sumCategoryCharge) .value {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        /* Fallback for browsers that don't support :has() - target by structure */
+        .summary-row .value>#sumCategoryCharge+small {
+            display: block;
+        }
     </style>
 @endpush
 
@@ -377,7 +431,8 @@
                 (list || []).forEach(function(it) {
                     map[it.item] = {
                         price: Number(it.price) || 0,
-                        unit: (it.unit || '').toLowerCase()
+                        unit: (it.unit || '').toLowerCase(),
+                        note: it.note || ''
                     };
                 });
                 return map;
@@ -385,6 +440,46 @@
 
             // AUD rate from backend
             const audRate = Number(@json($aud_rate)) || 0;
+
+            // JavaScript version of moneyFormatBD function (matches PHP helper function)
+            function moneyFormatBD(num) {
+                if (isNaN(num)) {
+                    return num;
+                }
+                num = Math.floor(num);
+                let explrestunits = '';
+                const numStr = num.toString();
+                if (numStr.length > 3) {
+                    const lastthree = numStr.substring(numStr.length - 3);
+                    let restunits = numStr.substring(0, numStr.length - 3);
+                    // Pad with zero if odd length to maintain 2's grouping
+                    restunits = restunits.length % 2 == 1 ? '0' + restunits : restunits;
+                    // Split into groups of 2
+                    const expunit = [];
+                    for (let i = 0; i < restunits.length; i += 2) {
+                        expunit.push(restunits.substring(i, i + 2));
+                    }
+                    // Build the formatted string
+                    for (let i = 0; i < expunit.length; i++) {
+                        if (i == 0) {
+                            // First value: convert to integer (removes leading zero)
+                            explrestunits += parseInt(expunit[i], 10) + ',';
+                        } else {
+                            explrestunits += expunit[i] + ',';
+                        }
+                    }
+                    return explrestunits + lastthree;
+                } else {
+                    return numStr;
+                }
+            }
+
+            // Helper function to format currency with moneyFormatBD (includes decimals)
+            function formatCurrency(amount) {
+                const integerPart = Math.floor(amount);
+                const decimalPart = (amount % 1).toFixed(2).substring(1); // Get .XX part
+                return moneyFormatBD(integerPart) + decimalPart;
+            }
 
             function toggleRemoveButtons() {
                 if ($('.product-url-item').length > 1) {
@@ -405,13 +500,19 @@
                 let totalWeightKg = 0;
                 let totalCategoryCharge = 0;
                 let deliveryChargeBdt = 0;
+                let hasCustomQuote = false;
 
                 $('.product-url-item').each(function() {
-                    const price = toNumber($(this).find('.product-price-input').val());
-                    const qty = Math.max(0, toNumber($(this).find('.product-quantity-input').val()));
-                    const weight = toNumber($(this).find('.product-weight-input').val());
-                    const unit = ($(this).find('.product-weight-unit-input').val() || 'kg').toLowerCase();
-                    const category = ($(this).find('select[name="category_id[]"]').val() || '').trim();
+                    const $item = $(this);
+                    const price = toNumber($item.find('.product-price-input').val());
+                    const $quantityInput = $item.find('.product-quantity-input');
+                    // Use quantity if enabled, otherwise use 1 for calculation
+                    const qty = $quantityInput.prop('disabled') ? 1 : Math.max(0, toNumber($quantityInput.val()));
+                    const weight = toNumber($item.find('.product-weight-input').val());
+                    const unit = ($item.find('.product-weight-unit-input').val() || 'kg').toLowerCase();
+                    const category = ($item.find('select[name="category_id[]"]').val() || '').trim();
+                    const isBloodSugarBP = category === 'Blood Sugar/BP Machine';
+                    const isCustomQuote = category === 'Laptop < $1500';
 
                     totalCost += price * qty;
 
@@ -425,22 +526,47 @@
                     let lineCatCharge = 0;
                     if (category && categoryPricing[category]) {
                         const cfg = categoryPricing[category];
-                        if (cfg.unit === 'kg') {
-                            lineCatCharge = (cfg.price * weightKg * qty);
-                        } else {
-                            lineCatCharge = (cfg.price * qty);
-                        }
-                        totalCategoryCharge += lineCatCharge;
-                    }
 
-                    // Update line total UI (category charge per item)
-                    $(this).find('.line-total-value').text(`AUD ${lineCatCharge.toFixed(2)}`);
+                        // Check if this item requires custom quote
+                        if (isCustomQuote) {
+                            hasCustomQuote = true;
+                            // Show custom quote message instead of price
+                            $item.find('.line-total-value').html('<span class="text-warning">Customs Quote require</span>');
+                        } else {
+                            if (cfg.unit === 'kg') {
+                                lineCatCharge = (cfg.price * weightKg * qty);
+                            } else if (isBloodSugarBP) {
+                                // Blood Sugar/BP Machine: use both price per pcs and per kg
+                                // Price per pcs * quantity + price per kg * (weight per item * quantity)
+                                lineCatCharge = (cfg.price * qty) + (cfg.price * weightKg * qty);
+                            } else {
+                                lineCatCharge = (cfg.price * qty);
+                            }
+                            totalCategoryCharge += lineCatCharge;
+                            // Update line total UI (category charge per item)
+                            $item.find('.line-total-value').text(`AUD ${formatCurrency(lineCatCharge)}`);
+                        }
+                    } else {
+                        // No category selected, show default
+                        $item.find('.line-total-value').text('AUD 0.00');
+                    }
                 });
 
                 $('#sumItems').text(items);
-                $('#sumProductCost').text(totalCost.toFixed(2));
+                $('#sumProductCost').text(`AUD ${formatCurrency(totalCost)}`);
                 $('#sumWeight').text(`${totalWeightKg.toFixed(2)} KG`);
-                $('#sumCategoryCharge').text(totalCategoryCharge.toFixed(2));
+
+                // Always show shipping charge amount
+                $('#sumCategoryCharge').text(`AUD ${formatCurrency(totalCategoryCharge)}`);
+
+                // Show custom quote note below shipping charge if applicable
+                const $customQuoteNote = $('#customQuoteShippingNote');
+                if (hasCustomQuote) {
+                    $customQuoteNote.text('Some items require customs quote').show();
+                } else {
+                    $customQuoteNote.hide();
+                }
+
                 const subTotal = totalCost + totalCategoryCharge;
 
                 // Delivery charge based on selection
@@ -450,11 +576,21 @@
 
                 const overallBdt = (subTotal * audRate) + deliveryChargeBdt;
 
-                $('#sumGrandTotal').text(`AUD ${subTotal.toFixed(2)}`);
+                $('#sumGrandTotal').text(`AUD ${formatCurrency(subTotal)}`);
                 $('#sumDelivery').text(`BDT ${deliveryChargeBdt.toFixed(2)}`);
-                $('#sumOverall').text(`BDT ${overallBdt.toFixed(2)}`);
-                $('#sumProductCost').text(`AUD ${totalCost.toFixed(2)}`);
-                $('#sumCategoryCharge').text(`AUD ${totalCategoryCharge.toFixed(2)}`);
+
+                // Format Overall Total using moneyFormatBD
+                $('#sumOverall').text(`BDT ${formatCurrency(overallBdt)}`);
+
+                // Update custom quote note in footer
+                const $customQuoteFooterNote = $('.summary-footer').find('.custom-quote-note');
+                if (hasCustomQuote) {
+                    if ($customQuoteFooterNote.length === 0) {
+                        $('.summary-footer').append('<small class="text-warning d-block mt-2 custom-quote-note"><i class="fa-solid fa-exclamation-triangle"></i> Some items require customs quote. Final shipping charge may vary.</small>');
+                    }
+                } else {
+                    $customQuoteFooterNote.remove();
+                }
             }
 
             // Validation function
@@ -465,8 +601,11 @@
                     const $item = $(this);
                     const category = ($item.find('select[name="category_id[]"]').val() || '').trim();
                     const price = toNumber($item.find('.product-price-input').val());
-                    const quantity = toNumber($item.find('.product-quantity-input').val());
-                    const weight = toNumber($item.find('.product-weight-input').val());
+                    const $quantityInput = $item.find('.product-quantity-input');
+                    const $weightInput = $item.find('.product-weight-input');
+                    const quantity = toNumber($quantityInput.val());
+                    const weight = toNumber($weightInput.val());
+                    const isBloodSugarBP = category === 'Blood Sugar/BP Machine';
 
                     // Validate category (mandatory for all)
                     if (!category) {
@@ -480,19 +619,23 @@
                         isValid = false;
                     }
 
-                    // Validate quantity (mandatory for all)
-                    if (!quantity || quantity < 1) {
-                        $item.find('.product-quantity-error').text('Quantity is required and must be at least 1');
-                        isValid = false;
+                    // Validate quantity (mandatory only if not disabled)
+                    if (!$quantityInput.prop('disabled')) {
+                        if (!quantity || quantity < 1) {
+                            $item.find('.product-quantity-error').text('Quantity is required and must be at least 1');
+                            isValid = false;
+                        }
                     }
 
-                    // Validate weight (mandatory only if category has unit "kg")
-                    if (category && categoryPricing[category]) {
-                        const cfg = categoryPricing[category];
-                        if (cfg.unit === 'kg') {
-                            if (!weight || weight <= 0) {
-                                $item.find('.product-weight-error').text('Weight is required for this category');
-                                isValid = false;
+                    // Validate weight (mandatory only if not disabled)
+                    if (!$weightInput.prop('disabled')) {
+                        if (category && categoryPricing[category]) {
+                            const cfg = categoryPricing[category];
+                            if (cfg.unit === 'kg' || isBloodSugarBP) {
+                                if (!weight || weight <= 0) {
+                                    $item.find('.product-weight-error').text('Weight is required for this category');
+                                    isValid = false;
+                                }
                             }
                         }
                     }
@@ -506,36 +649,92 @@
             computeTotals();
             $('#estimateSummary').hide();
 
-            // Handle category change - update weight requirement
+            // Trigger category change for any pre-selected categories
+            $('select[name="category_id[]"]').each(function() {
+                if ($(this).val()) {
+                    $(this).trigger('change');
+                }
+            });
+
+            // Handle category change - update weight/quantity requirement and enable/disable fields
             $(document).on('change', 'select[name="category_id[]"]', function() {
                 const $item = $(this).closest('.product-url-item');
                 const category = $(this).val() || '';
                 const $weightInput = $item.find('.product-weight-input');
                 const $weightUnit = $item.find('.product-weight-unit-input');
                 const $weightError = $item.find('.product-weight-error');
+                const $quantityInput = $item.find('.product-quantity-input');
+                const $quantityError = $item.find('.product-quantity-error');
 
-                // Clear previous error
+                // Clear previous errors
                 $weightError.text('');
+                $quantityError.text('');
+
+                // Special case: Blood Sugar/BP Machine needs both quantity and weight
+                const isBloodSugarBP = category === 'Blood Sugar/BP Machine';
 
                 // Check if category requires weight
                 if (category && categoryPricing[category]) {
                     const cfg = categoryPricing[category];
+
                     if (cfg.unit === 'kg') {
+                        // For kg-based items: enable weight, disable quantity
                         $weightInput.prop('required', true);
+                        $weightInput.prop('disabled', false);
                         $weightUnit.prop('required', true);
+                        $weightUnit.prop('disabled', false);
+
+                        $quantityInput.prop('required', false);
+                        $quantityInput.prop('disabled', true);
+                        $quantityInput.val(1); // Set to 1 for calculation purposes
+
                         // Validate if weight is already entered
                         const weight = toNumber($weightInput.val());
                         if (!weight || weight <= 0) {
                             $weightError.text('Weight is required for this category');
                         }
+                    } else if (cfg.unit === 'pcs') {
+                        // For pcs-based items: enable quantity, disable weight (unless Blood Sugar/BP Machine)
+                        $quantityInput.prop('required', true);
+                        $quantityInput.prop('disabled', false);
+
+                        if (isBloodSugarBP) {
+                            // Blood Sugar/BP Machine needs both
+                            $weightInput.prop('required', true);
+                            $weightInput.prop('disabled', false);
+                            $weightUnit.prop('required', true);
+                            $weightUnit.prop('disabled', false);
+                        } else {
+                            // Regular pcs items: disable weight
+                            $weightInput.prop('required', false);
+                            $weightInput.prop('disabled', true);
+                            $weightInput.val(0);
+                            $weightUnit.prop('required', false);
+                            $weightUnit.prop('disabled', true);
+                        }
+
+                        // Validate if quantity is already entered
+                        const quantity = toNumber($quantityInput.val());
+                        if (!quantity || quantity < 1) {
+                            $quantityError.text('Quantity is required for this category');
+                        }
                     } else {
+                        // No unit specified or empty unit
                         $weightInput.prop('required', false);
+                        $weightInput.prop('disabled', false);
                         $weightUnit.prop('required', false);
-                        $weightError.text('');
+                        $weightUnit.prop('disabled', false);
+                        $quantityInput.prop('required', true);
+                        $quantityInput.prop('disabled', false);
                     }
                 } else {
+                    // No category selected - enable all fields
                     $weightInput.prop('required', false);
+                    $weightInput.prop('disabled', false);
                     $weightUnit.prop('required', false);
+                    $weightUnit.prop('disabled', false);
+                    $quantityInput.prop('required', true);
+                    $quantityInput.prop('disabled', false);
                 }
 
                 computeTotals();
@@ -577,7 +776,9 @@
                                 <select name="category_id[]" class="form-control select2" autocomplete="off">
                                     <option value="">Select Category</option>
                                     @foreach ($price_list as $item)
-                                        <option value="{{ $item['item'] }}">{{ $item['item'] }}</option>
+                                        <option value="{{ $item['item'] }}">
+                                            {{ $item['item'] }}{{ $item['item'] === 'General Goods' && !empty($item['note']) ? ' - ' . $item['note'] : '' }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 <div class="text-danger error-text category-error"></div>

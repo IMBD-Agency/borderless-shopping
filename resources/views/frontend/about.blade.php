@@ -72,7 +72,7 @@
                                             <h3 class="card-title"><i class="fa-solid fa-shield-check me-2"></i>Secure & Reliable</h3>
                                         </div>
                                         <div class="card-body">
-                                            <p class="mb-0 text-muted">Insured handling and careful packaging from store to doorstep.</p>
+                                            <p class="mb-0 text-muted">Handling and careful packaging from store to your doorstep.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -103,6 +103,7 @@
                                         </div>
                                         <div class="card-body">
                                             <p class="mb-0 text-muted">Friendly help via email, phone, and WhatsApp around the clock.</p>
+                                            <p class="text-muted small fst-italic">(Note: This sometimes might affect due to time zone difference)</p>
                                         </div>
                                     </div>
                                 </div>

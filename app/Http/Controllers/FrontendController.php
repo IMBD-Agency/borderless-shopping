@@ -338,99 +338,88 @@ class FrontendController extends Controller {
     public function priceCalculator() {
         $this->price_list = [
             [
-                "item" => "AirPods/Buds",
-                "price" => 50,
-                "unit" => ""
-            ],
-            [
-                "item" => "Auto Mobile Parts & Car Accessories",
-                "price" => 30,
-                "unit" => "kg"
-            ],
-            [
-                "item" => "Blood Sugar/BP Device",
-                "price" => 17,
-                "unit" => "kg"
-            ],
-            [
-                "item" => "Books",
-                "price" => 17,
-                "unit" => "kg"
-            ],
-            [
-                "item" => "Chocolates",
-                "price" => 17,
-                "unit" => "kg"
-            ],
-            [
-                "item" => "Clothing",
-                "price" => 17,
-                "unit" => "kg"
-            ],
-            [
-                "item" => "Dry Foods",
-                "price" => 17,
-                "unit" => "kg"
-            ],
-            [
-                "item" => "DSLR Camera (Up to 1kg)",
-                "price" => 100,
-                "unit" => ""
-            ],
-            [
-                "item" => "Electrical Appliances",
-                "price" => 17,
-                "unit" => "kg"
-            ],
-            [
-                "item" => "iPad & Tab (Up to 1kg)",
-                "price" => 100,
-                "unit" => ""
-            ],
-            [
-                "item" => "Laptop (Up to 2.5kg)",
-                "price" => 150,
-                "unit" => ""
-            ],
-            [
-                "item" => "Leather Items",
-                "price" => 17,
-                "unit" => "kg"
-            ],
-            [
-                "item" => "Make Up & Beauty Products",
-                "price" => 25,
-                "unit" => "kg"
-            ],
-            [
-                "item" => "Shampoo & Lotion",
+                "item" => "General Goods",
                 "price" => 20,
-                "unit" => "kg"
+                "unit" => "kg",
+                "note" => "Books, Chocolate, Clothing, Dry foods, Leather Items, Shoes"
             ],
             [
-                "item" => "Shoes",
-                "price" => 17,
-                "unit" => "kg"
-            ],
-            [
-                "item" => "Smart Watch",
-                "price" => 85,
-                "unit" => ""
-            ],
-            [
-                "item" => "Tech Item & Computer Equipment",
+                "item" => "Auto parts",
                 "price" => 35,
                 "unit" => "kg"
             ],
             [
-                "item" => "Vitamin & Supplement",
-                "price" => 27,
+                "item" => "Airpods/Earbuds/Headphones",
+                "price" => 60,
+                "unit" => "pcs"
+            ],
+            [
+                "item" => "Blood Sugar/BP Machine",
+                "price" => 20,
+                "unit" => "pcs",
+                "note" => "This items based on weight and qty as well"
+            ],
+            [
+                "item" => "DSLR Camera",
+                "price" => 130,
+                "unit" => "pcs"
+            ],
+            [
+                "item" => "iPad and Tabs",
+                "price" => 110,
+                "unit" => "pcs"
+            ],
+            [
+                "item" => "Cosmetics",
+                "price" => 28,
                 "unit" => "kg"
             ],
             [
-                "item" => "XBOX/PS/Gaming Console (Up to 2.5kg)",
-                "price" => 120,
-                "unit" => ""
+                "item" => "Toiletries",
+                "price" => 23,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "Smart Watch > $500",
+                "price" => 60,
+                "unit" => "pcs"
+            ],
+            [
+                "item" => "Smart Watch < $500",
+                "price" => 85,
+                "unit" => "pcs"
+            ],
+            [
+                "item" => "Tech & Computer Accessories",
+                "price" => 40,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "Laptop > $1500",
+                "price" => 185,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "Laptop < $1500",
+                "price" => null,
+                "unit" => "",
+                "note" => "Customs Quote require"
+            ],
+            [
+                "item" => "Vitamin & Supplements",
+                "price" => 30,
+                "unit" => "kg"
+            ],
+            [
+                "item" => "Electric/Small Appliances > $150",
+                "price" => 25,
+                "unit" => "pcs",
+                "price_per_kg" => 20
+            ],
+            [
+                "item" => "XBOX/PS or any Gaming Console (Upto 2.5KG)",
+                "price" => 135,
+                "unit" => "pcs"
             ]
         ];
 
